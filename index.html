@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOYU BROS | Artisan Malaysia Soy Sauce</title>
+    <title>SHOYU BROS | An Artisan Malaysia Soy Sauce</title>
     <!-- Fraunces for headings (Graza/Shoyubros style), Rubik for body -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Rubik:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -50,6 +50,7 @@
 
         .marquee span {
             margin: 0 2rem;
+            text-transform: uppercase;
         }
 
         @keyframes marquee {
@@ -71,13 +72,13 @@
         }
 
         .logo {
-            font-family: var(--font-heading);
-            font-size: 2.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            color: var(--text-color);
+        }
+
+        .logo img {
+            height: 60px;
         }
 
         nav {
@@ -146,9 +147,9 @@
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
             font-weight: 900;
-            line-height: 1;
+            line-height: 1.1;
             margin: 0 0 1.5rem 0;
             letter-spacing: -2px;
         }
@@ -161,7 +162,7 @@
 
         .hero p {
             font-size: 1.3rem;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 2.5rem;
             max-width: 550px;
             font-weight: 400;
@@ -171,7 +172,7 @@
             flex: 1;
             background-color: var(--primary-color);
             border: 3px solid var(--border-color);
-            border-radius: 200px 200px 20px 20px; /* playful arch shape */
+            border-radius: 200px 200px 20px 20px;
             height: 600px;
             position: relative;
             box-shadow: 12px 12px 0px var(--border-color);
@@ -179,6 +180,12 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Wavy separator */
@@ -205,19 +212,31 @@
             background: var(--bg-color);
             border: 3px solid var(--border-color);
             border-radius: 24px;
-            padding: 3rem 2rem;
+            padding: 2rem;
             box-shadow: 8px 8px 0px var(--border-color);
             text-align: center;
             transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
         }
 
+        .feature-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
         .feature-card h3 {
             font-family: var(--font-heading);
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--text-color);
             line-height: 1.1;
@@ -228,12 +247,6 @@
             font-size: 1.1rem;
         }
 
-        .feature-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
         /* Footer */
         footer {
             background-color: var(--text-color);
@@ -242,11 +255,10 @@
             text-align: center;
         }
 
-        footer h2 {
-            font-family: var(--font-heading);
-            font-size: 4rem;
+        footer img {
+            height: 100px;
             margin-bottom: 2rem;
-            color: var(--primary-color);
+            filter: brightness(0) invert(1);
         }
         
         .footer-links {
@@ -305,25 +317,19 @@
 
     <div class="marquee">
         <div class="marquee-content">
-            <span>UMAMI YOU NEED</span>
-            <span>✦</span>
-            <span>FIRST DRAW SOY SAUCE</span>
+            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
             <span>✦</span>
             <span>NON GMO CANADIAN SOY BEANS</span>
             <span>✦</span>
             <span>NO MSG ADDED</span>
             <span>✦</span>
-            <span>UMAMI YOU NEED</span>
-            <span>✦</span>
-            <span>FIRST DRAW SOY SAUCE</span>
+            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
             <span>✦</span>
             <span>NON GMO CANADIAN SOY BEANS</span>
             <span>✦</span>
             <span>NO MSG ADDED</span>
             <span>✦</span>
-            <span>UMAMI YOU NEED</span>
-            <span>✦</span>
-            <span>FIRST DRAW SOY SAUCE</span>
+            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
             <span>✦</span>
             <span>NON GMO CANADIAN SOY BEANS</span>
             <span>✦</span>
@@ -333,7 +339,9 @@
     </div>
 
     <header>
-        <a href="#" class="logo">Shoyu Bros</a>
+        <a href="#" class="logo">
+            <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
+        </a>
         <nav>
             <a href="#">Shop</a>
             <a href="#">Our Story</a>
@@ -344,12 +352,12 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h1>The Only <i>UMAMI</i> You Need.</h1>
-            <p>Arguably one of the best soy sauces in Malaysia. First in the market to have such a unique and fragrant aged shoyu with natural fermentation. A premium product that will definitely capture your palate.</p>
+            <h1>The only <i>UMAMI</i> you need, aged shoyu.</h1>
+            <p>Arguably one of the best soy sauce in Malaysia. First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
             <a href="#" class="btn" style="font-size: 1.25rem; padding: 1rem 2.5rem;">Shop First Draw</a>
         </div>
         <div class="hero-image">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; transform: rotate(-5deg); text-shadow: 2px 2px 0 #fff;">Bottle Image Here</h2>
+            <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Premium Soy Sauce">
         </div>
     </section>
 
@@ -357,24 +365,24 @@
 
     <section class="features">
         <div class="feature-card">
-            <span class="feature-icon">🏺</span>
+            <img src="https://shoyubros.com/cdn/shop/files/IMG_20210602_091210_e92b13bc-4c82-41a3-99b4-e0fbccdbf2bc_720x.jpg" alt="Natural Fermentation">
             <h3>Natural Fermentation</h3>
-            <p>Aged perfectly to bring out the deepest flavors. First draw soy sauce carefully crafted for your daily meals.</p>
+            <p>First draw soy sauce with natural fermentation. Aged perfectly to bring out the deepest flavors for your daily meals.</p>
         </div>
         <div class="feature-card">
-            <span class="feature-icon">🌱</span>
-            <h3>Non-GMO Beans</h3>
-            <p>Made strictly from premium Canadian non-GMO soy beans to ensure the highest quality and safety for your family.</p>
+            <img src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Non GMO Canadian Soy Beans">
+            <h3>Non GMO Beans</h3>
+            <p>Made strictly from premium Non GMO Canadian soy beans to ensure the highest quality and safety.</p>
         </div>
         <div class="feature-card">
-            <span class="feature-icon">✨</span>
-            <h3>Zero MSG Added</h3>
+            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Stirfry Dish">
+            <h3>NO MSG Added</h3>
             <p>Pure, unadulterated umami. We let the natural aging process do the heavy lifting so you get authentic taste.</p>
         </div>
     </section>
 
     <footer>
-        <h2>Shoyu Bros</h2>
+        <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
         <div class="footer-links">
             <a href="#">Instagram</a>
             <a href="#">Facebook</a>
