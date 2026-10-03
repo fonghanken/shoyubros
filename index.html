@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHOYU BROS | An Artisan Malaysia Soy Sauce</title>
+    <!-- Graza-style chunky serif and sans-serif fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f5f5f5;
+            /* Shoyubros Colors mapped to Graza Layout */
+            --bg-color: #f5f5f5; /* Body cream/off-white */
             --text-color: #000000;
-            --primary-color: #d4af37; /* Gold */
-            --primary-dark: #b29126;
+            --primary-color: #d4af37; /* Replaces Graza's bright yellow/red accents */
+            --hero-bg: #1c1c1c; /* A dark color for the hero behind the video to contrast like Graza's dark green */
             --border-color: #000000;
             --border-width: 4px;
             --shadow-offset: 8px;
@@ -24,25 +26,186 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
+            background-color: var(--hero-bg); /* The underlying page color is dark for the hero */
             color: var(--text-color);
             font-family: var(--font-body);
             overflow-x: hidden;
         }
 
-        /* Top Marquee */
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background-color: var(--bg-color);
+            border-bottom: var(--border-width) solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img { height: 40px; display: block; }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 4px;
+        }
+
+        .btn-nav {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 0.5rem 1.5rem;
+            border: 3px solid var(--border-color);
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px var(--border-color);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .btn-nav:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        /* Graza-style Hero (Massive video background, centered cutout bottle) */
+        .hero-banner {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.8;
+        }
+        
+        /* Dark overlay to make text pop */
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .hero-headline {
+            font-family: var(--font-heading);
+            font-size: clamp(4rem, 10vw, 9rem);
+            font-weight: 900;
+            margin: 0;
+            line-height: 0.9;
+            color: var(--bg-color); /* White text like Graza hero */
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0px var(--border-color);
+            letter-spacing: -2px;
+            z-index: 4;
+        }
+
+        .hero-headline i {
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .hero-bottle {
+            width: 280px;
+            height: auto;
+            margin-top: -80px;
+            margin-bottom: -50px;
+            z-index: 5;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.8));
+            transform: rotate(5deg);
+        }
+
+        .btn-huge {
+            margin-top: 2rem;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 1rem 3rem;
+            border: var(--border-width) solid var(--border-color);
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
+            transition: transform 0.1s, box-shadow 0.1s;
+            z-index: 6;
+        }
+        
+        .btn-huge:active {
+            transform: translate(var(--shadow-offset), var(--shadow-offset));
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        /* Main Content Body - Slides up over the sticky hero */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            background-color: var(--bg-color);
+            border-top: var(--border-width) solid var(--border-color);
+            border-radius: 40px 40px 0 0;
+            margin-top: -60px; /* Overlaps hero */
+            padding-top: 2rem;
+        }
+
+        /* Marquee */
         .marquee {
             background-color: var(--text-color);
             color: var(--primary-color);
-            padding: 0.75rem 0;
+            padding: 1rem 0;
             white-space: nowrap;
             overflow: hidden;
             display: flex;
             font-family: var(--font-body);
             font-weight: 900;
-            font-size: 1.5rem;
+            font-size: 2rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            border-bottom: var(--border-width) solid var(--border-color);
+            border-top: var(--border-width) solid var(--border-color);
         }
 
         .marquee-content {
@@ -57,166 +220,50 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Header */
-        header {
+        /* 50/50 Split Layout commonly used in Graza */
+        .split-section {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 3rem;
+            align-items: stretch;
             border-bottom: var(--border-width) solid var(--border-color);
+        }
+
+        .split-image {
+            flex: 1;
             background-color: var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo img { height: 50px; display: block; }
-
-        nav {
+            border-right: var(--border-width) solid var(--border-color);
+            padding: 4rem;
             display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 900;
-            font-size: 1.25rem;
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-            text-decoration-thickness: 4px;
-            text-underline-offset: 4px;
-        }
-
-        .btn {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 0.75rem 2rem;
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-            transition: transform 0.1s, box-shadow 0.1s;
-            display: inline-flex;
             align-items: center;
             justify-content: center;
         }
 
-        .btn:hover { background-color: var(--primary-color); }
-        .btn:active {
-            transform: translate(var(--shadow-offset), var(--shadow-offset));
-            box-shadow: 0px 0px 0px var(--border-color);
-        }
-
-        /* Massive Full-Width Hero Section with Video */
-        .hero-banner {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            border-bottom: var(--border-width) solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            background-color: var(--primary-color);
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .split-image img {
             width: 100%;
             height: 100%;
+            max-height: 600px;
             object-fit: cover;
-            z-index: 0;
-        }
-        
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 1;
-        }
-
-        .hero-banner-content {
-            position: relative;
-            z-index: 2;
-            background: var(--bg-color);
             border: var(--border-width) solid var(--border-color);
-            padding: 3rem 4rem;
-            border-radius: 20px;
+            border-radius: 30px;
             box-shadow: 12px 12px 0px var(--border-color);
             transform: rotate(-2deg);
         }
 
-        .hero-banner h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 900;
-            margin: 0;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-            color: var(--text-color);
-        }
-        
-        .hero-banner h1 i {
-            color: var(--primary-color);
-            font-style: italic;
-        }
-
-        .hero-banner p {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 1rem 0 2rem;
-            max-width: 500px;
-        }
-
-        /* Wavy divider */
-        .wavy {
-            height: 60px;
-            background-color: var(--primary-color);
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q 30 30, 60 15 T 120 15' fill='none' stroke='%23000' stroke-width='4'/%3E%3C/svg%3E");
-            background-repeat: repeat-x;
-            background-position: center;
-            border-bottom: var(--border-width) solid var(--border-color);
-        }
-        
-        /* 50/50 Split Section */
-        .split-section {
-            display: flex;
-            align-items: stretch;
-            min-height: 70vh;
-            border-bottom: var(--border-width) solid var(--border-color);
-        }
-
         .split-text {
             flex: 1;
-            padding: 5rem 4rem;
+            padding: 6rem 5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-right: var(--border-width) solid var(--border-color);
-            background-color: var(--primary-color);
+            background-color: var(--bg-color);
         }
 
         .split-text h2 {
             font-family: var(--font-heading);
-            font-size: clamp(3rem, 6vw, 6rem);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
             font-weight: 900;
             line-height: 0.95;
-            margin: 0 0 2rem 0;
-            letter-spacing: -3px;
+            margin: 0 0 1.5rem 0;
+            letter-spacing: -2px;
         }
 
         .split-text p {
@@ -224,91 +271,50 @@
             line-height: 1.4;
             margin-bottom: 3rem;
             font-weight: 700;
-            max-width: 600px;
-        }
-
-        .split-image {
-            flex: 1;
-            background-color: var(--bg-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem;
-            position: relative;
-        }
-
-        .bottle-img-wrapper {
-            background: var(--bg-color);
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 100px 100px 20px 20px;
-            box-shadow: 12px 12px 0px var(--border-color);
-            overflow: hidden;
-            width: 80%;
-            max-width: 500px;
-            aspect-ratio: 4/5;
-        }
-
-        .bottle-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
 
         /* Features Section */
         .features-wrapper {
-            padding: 6rem 4rem;
+            padding: 8rem 4rem;
             background-color: var(--bg-color);
+            border-bottom: var(--border-width) solid var(--border-color);
         }
 
         .features-header {
             text-align: center;
             font-family: var(--font-heading);
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 900;
-            margin-bottom: 4rem;
-            letter-spacing: -1px;
+            margin-bottom: 5rem;
+            letter-spacing: -2px;
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
         }
 
         .feature-card {
-            background: var(--primary-color);
+            background: var(--bg-color);
             border: var(--border-width) solid var(--border-color);
-            border-radius: 24px;
-            padding: 1.5rem;
+            border-radius: 30px;
+            padding: 2rem;
             box-shadow: 12px 12px 0px var(--border-color);
-            display: flex;
-            flex-direction: column;
-            transform: rotate(-1deg);
-            transition: transform 0.2s;
-        }
-        
-        .feature-card:nth-child(2) {
-            transform: rotate(2deg);
-            background: #ffffff;
-        }
-        
-        .feature-card:nth-child(3) {
-            transform: rotate(-2deg);
+            text-align: left;
         }
 
-        .feature-card:hover {
-            transform: rotate(0deg) scale(1.02);
-            z-index: 10;
-        }
+        .feature-card:nth-child(1) { background: var(--primary-color); transform: translateY(20px); }
+        .feature-card:nth-child(2) { background: var(--bg-color); }
+        .feature-card:nth-child(3) { background: var(--primary-color); transform: translateY(-20px); }
 
         .feature-img {
             width: 100%;
-            height: 250px;
+            height: 300px;
             object-fit: cover;
             border: var(--border-width) solid var(--border-color);
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            background-color: var(--bg-color);
+            border-radius: 20px;
+            margin-bottom: 2rem;
         }
 
         .feature-card h3 {
@@ -326,21 +332,10 @@
             margin: 0;
         }
 
-        /* Banner Break */
-        .banner-break {
-            width: 100%;
-            height: 60vh;
-            background-image: url('https://shoyubros.com/cdn/shop/files/strifry_banner2_2048x.jpg?v=1626941187');
-            background-size: cover;
-            background-position: center;
-            border-top: var(--border-width) solid var(--border-color);
-            border-bottom: var(--border-width) solid var(--border-color);
-        }
-
         /* Footer */
         footer {
             background-color: var(--text-color);
-            color: var(--primary-color);
+            color: var(--bg-color);
             padding: 6rem 4rem;
             display: flex;
             flex-direction: column;
@@ -349,15 +344,15 @@
         }
 
         footer img {
-            height: 120px;
-            margin-bottom: 2rem;
-            filter: invert(75%) sepia(35%) saturate(760%) hue-rotate(5deg) brightness(95%) contrast(93%);
+            height: 80px;
+            margin-bottom: 3rem;
+            filter: invert(1); 
         }
         
         .footer-links {
             display: flex;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
         .footer-links a {
@@ -373,44 +368,20 @@
         }
 
         @media (max-width: 900px) {
-            .split-section { flex-direction: column; }
-            .split-text {
-                border-right: none;
-                border-bottom: var(--border-width) solid var(--border-color);
-                padding: 3rem 2rem;
-                text-align: center;
-            }
-            .split-image { padding: 3rem 2rem; }
-            header { flex-direction: column; gap: 2rem; }
+            header { flex-direction: column; gap: 1rem; }
             nav { flex-wrap: wrap; justify-content: center; }
-            .hero-banner-content { padding: 2rem; transform: rotate(0deg); }
+            .hero-headline { font-size: 4rem; }
+            .hero-bottle { width: 200px; margin-top: -40px; margin-bottom: -20px; }
+            .split-section { flex-direction: column-reverse; }
+            .split-text { padding: 4rem 2rem; text-align: center; border-right: none; }
+            .split-image { padding: 3rem 2rem; border-right: none; border-bottom: var(--border-width) solid var(--border-color); }
+            .features-wrapper { padding: 4rem 2rem; }
+            .feature-card:nth-child(n) { transform: none; }
+            .footer-links { flex-direction: column; gap: 2rem; }
         }
     </style>
 </head>
 <body>
-
-    <div class="marquee">
-        <div class="marquee-content">
-            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
-            <span>✦</span>
-            <span>NON GMO CANADIAN SOY BEANS</span>
-            <span>✦</span>
-            <span>NO MSG ADDED</span>
-            <span>✦</span>
-            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
-            <span>✦</span>
-            <span>NON GMO CANADIAN SOY BEANS</span>
-            <span>✦</span>
-            <span>NO MSG ADDED</span>
-            <span>✦</span>
-            <span>FIRST DRAW SOY SAUCE WITH NATURAL FERMENTATION</span>
-            <span>✦</span>
-            <span>NON GMO CANADIAN SOY BEANS</span>
-            <span>✦</span>
-            <span>NO MSG ADDED</span>
-            <span>✦</span>
-        </div>
-    </div>
 
     <header>
         <a href="#" class="logo">
@@ -420,74 +391,85 @@
             <a href="#">Shop</a>
             <a href="#">Our Story</a>
             <a href="#">Recipes</a>
+            <a href="#" class="btn-nav">Get Shoyu</a>
         </nav>
-        <a href="#" class="btn">Get Shoyu</a>
     </header>
 
-    <!-- Massive Full-Width Hero Section with Video Background -->
+    <!-- Graza-style Hero: Video background with huge floating bottle and massive text -->
     <section class="hero-banner">
-        <!-- We use a Shoyubros image as the poster fallback since they don't have a video on their site yet -->
+        <!-- Placeholder for Shoyubros video -->
         <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
-            <!-- Add a video source URL here when Shoyubros provides one! -->
-            <!-- <source src="shoyubros_video.mp4" type="video/mp4"> -->
+            <!-- <source src="video.mp4" type="video/mp4"> -->
         </video>
-        <div class="hero-banner-content">
-            <h1>The only <br><i>UMAMI</i><br> you need.</h1>
-            <p>Arguably one of the best soy sauce in Malaysia.</p>
-            <a href="#" class="btn">Shop Now</a>
+        
+        <div class="hero-content">
+            <h1 class="hero-headline">The only</h1>
+            <!-- The cutout bottle sits smack in the middle of the typography -->
+            <img class="hero-bottle" src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Bottle">
+            <h1 class="hero-headline"><i>UMAMI</i> you need.</h1>
+            <a href="#" class="btn-huge">Shop First Draw</a>
         </div>
     </section>
 
-    <!-- 50/50 Split Layout commonly used in Graza -->
-    <section class="split-section">
-        <div class="split-text">
-            <h2>Unique and fragrant.</h2>
-            <p>First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
-            <div>
-                <a href="#" class="btn">Discover our process</a>
+    <!-- The main body content overlaps the hero with rounded corners -->
+    <main class="main-content">
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
+                <span>✦</span>
+                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
+                <span>✦</span>
+                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
+                <span>✦</span>
             </div>
         </div>
-        <div class="split-image">
-            <div class="bottle-img-wrapper">
-                <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Premium Soy Sauce">
-            </div>
-        </div>
-    </section>
 
-    <div class="wavy"></div>
+        <section class="split-section">
+            <div class="split-image">
+                <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_1080x.jpg?v=1624440332" alt="Aged Shoyu Details">
+            </div>
+            <div class="split-text">
+                <h2>Unique &amp; fragrant.</h2>
+                <p>Arguably one of the best soy sauces in Malaysia. First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
+                <div>
+                    <a href="#" class="btn-huge">Discover our process</a>
+                </div>
+            </div>
+        </section>
 
-    <section class="features-wrapper">
-        <h2 class="features-header">Real ingredients.</h2>
-        <div class="features">
-            <div class="feature-card">
-                <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/IMG_20210602_091210_e92b13bc-4c82-41a3-99b4-e0fbccdbf2bc_720x.jpg" alt="Natural Fermentation">
-                <h3>Natural Fermentation</h3>
-                <p>First draw soy sauce with natural fermentation. Aged perfectly to bring out the deepest flavors for your daily meals.</p>
+        <section class="features-wrapper">
+            <h2 class="features-header">Real ingredients.</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/IMG_20210602_091210_e92b13bc-4c82-41a3-99b4-e0fbccdbf2bc_720x.jpg" alt="Natural Fermentation">
+                    <h3>Natural Fermentation</h3>
+                    <p>First draw soy sauce with natural fermentation. Aged perfectly to bring out the deepest flavors for your daily meals.</p>
+                </div>
+                <div class="feature-card">
+                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Non GMO Canadian Soy Beans">
+                    <h3>Non GMO Beans</h3>
+                    <p>Made strictly from premium Non GMO Canadian soy beans to ensure the highest quality and safety.</p>
+                </div>
+                <div class="feature-card">
+                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Stirfry Dish">
+                    <h3>NO MSG Added</h3>
+                    <p>Pure, unadulterated umami. We let the natural aging process do the heavy lifting so you get authentic taste.</p>
+                </div>
             </div>
-            <div class="feature-card">
-                <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Non GMO Canadian Soy Beans">
-                <h3>Non GMO Beans</h3>
-                <p>Made strictly from premium Non GMO Canadian soy beans to ensure the highest quality and safety.</p>
-            </div>
-            <div class="feature-card">
-                <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_1080x.jpg?v=1624440332" alt="Aged Shoyu">
-                <h3>NO MSG Added</h3>
-                <p>Pure, unadulterated umami. We let the natural aging process do the heavy lifting so you get authentic taste.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Break Banner -->
-    <div class="banner-break"></div>
+    </main>
 
     <footer>
         <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
         <div class="footer-links">
+            <a href="#">Shop</a>
+            <a href="#">About</a>
             <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
             <a href="#">Contact</a>
         </div>
-        <p style="margin-top: 2rem; opacity: 0.8; font-size: 1rem; font-weight: 700; color: var(--bg-color);">&copy; 2026 Shoyu Bros. All rights reserved.</p>
+        <p style="margin-top: 2rem; opacity: 0.8; font-size: 1.2rem; font-weight: 700; color: var(--bg-color);">&copy; 2026 Shoyu Bros. All rights reserved.</p>
     </footer>
 
 </body>
