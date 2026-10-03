@@ -124,8 +124,8 @@
             height: 100vh;
             background-color: #3C422E;
             display: flex;
-            align-items: flex-end; /* Align content to bottom */
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             overflow: hidden;
         }
 
@@ -164,9 +164,9 @@
         <!-- Header (Transparent initially, solid on scroll) -->
         <header id="main-nav" class="w-full px-6 md:px-10 py-3 flex justify-between items-center transition-all duration-300 bg-transparent border-b-[2px] border-transparent text-white">
             <!-- Left Links -->
-            <nav class="hidden md:flex flex-1 gap-8 font-sans font-bold text-[13px] uppercase tracking-[0.1em]">
-                <a href="https://shoyubros.com/collections/all" target="_blank" class="hover:text-graza-red transition-colors">Shop</a>
-                <a href="https://shoyubros.com/" target="_blank" class="hover:text-graza-red transition-colors">Singapore Shop</a>
+            <nav class="hidden md:flex flex-1 gap-8 font-sans font-bold text-[13px] uppercase tracking-[0.1em] items-center">
+                <a href="https://shoyubros.com/collections/all" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">Shop</a>
+                <a href="https://shoyubros.com/" target="_blank" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
             </nav>
             
             <!-- Center Logo with Glow -->
@@ -176,8 +176,8 @@
             
             <!-- Right Links -->
             <nav class="hidden md:flex flex-1 gap-8 justify-end items-center font-sans font-bold text-[13px] uppercase tracking-[0.1em]">
-                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="hover:text-graza-red transition-colors">Our Story</a>
-                <a href="https://shoyubros.com/cart" target="_blank" class="hover:text-graza-red transition-colors">
+                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="hover:text-graza-lime transition-colors">Our Story</a>
+                <a href="https://shoyubros.com/cart" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">
                     Cart (0)
                 </a>
             </nav>
@@ -191,10 +191,13 @@
             <source src="stirfry-evaluate-04.mp4" type="video/mp4">
         </video>
         
-        <div class="hero-content w-full px-4 pb-20">
-            <h1 class="font-serif text-[4rem] md:text-[8rem] leading-[0.9] text-white mb-6" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+        <div class="relative z-10 w-full px-6 pt-32 md:pt-40 text-center">
+            <h1 class="font-serif text-[4rem] md:text-[8rem] leading-[0.9] text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
                 The Only Bro<br>You'll Need.
             </h1>
+        </div>
+        
+        <div class="relative z-10 w-full px-6 pb-32 text-center">
             <p class="font-sans text-xl md:text-2xl text-white max-w-lg mx-auto font-medium mb-8" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
                 The magic shoyu that brings out the best in your dishes. Be prepared for an umami experience.
             </p>
@@ -219,7 +222,7 @@
         <section class="max-w-6xl mx-auto px-6 mb-32">
             <div class="bg-graza-white rounded-[40px] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 md:gap-24 shadow-sm">
                 <div class="w-full md:w-1/2">
-                    <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_1080x.jpg?v=1628219282" alt="Artisan Shoyu" class="w-full rounded-[30px] object-cover h-[500px] shadow-lg">
+                    <img src="https://shoyubros.com/cdn/shop/files/BDP06292resized_1080x.jpg?v=1628394484" alt="Artisan Shoyu" class="w-full rounded-[30px] object-cover h-[500px] shadow-lg">
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="font-serif text-5xl md:text-6xl text-graza-dark mb-4 leading-tight">Artisan Garlic-Infused Shoyu</h2>
