@@ -136,7 +136,7 @@
             font-size: clamp(4rem, 10vw, 9rem);
             font-weight: 900;
             margin: 0;
-            line-height: 0.9;
+            line-height: 1.1;
             color: var(--bg-color); /* White text like Graza hero */
             text-transform: uppercase;
             text-shadow: 4px 4px 0px var(--border-color);
@@ -147,16 +147,6 @@
         .hero-headline i {
             color: var(--primary-color);
             font-style: italic;
-        }
-
-        .hero-bottle {
-            width: 280px;
-            height: auto;
-            margin-top: -80px;
-            margin-bottom: -50px;
-            z-index: 5;
-            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.8));
-            transform: rotate(5deg);
         }
 
         .btn-huge {
@@ -371,7 +361,6 @@
             header { flex-direction: column; gap: 1rem; }
             nav { flex-wrap: wrap; justify-content: center; }
             .hero-headline { font-size: 4rem; }
-            .hero-bottle { width: 200px; margin-top: -40px; margin-bottom: -20px; }
             .split-section { flex-direction: column-reverse; }
             .split-text { padding: 4rem 2rem; text-align: center; border-right: none; }
             .split-image { padding: 3rem 2rem; border-right: none; border-bottom: var(--border-width) solid var(--border-color); }
@@ -384,18 +373,18 @@
 <body>
 
     <header>
-        <a href="#" class="logo">
+        <a href="https://shoyubros.com/" class="logo" target="_blank">
             <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
         </a>
         <nav>
-            <a href="#">Shop</a>
-            <a href="#">Our Story</a>
-            <a href="#">Recipes</a>
-            <a href="#" class="btn-nav">Get Shoyu</a>
+            <a href="https://shoyubros.com/collections/all" target="_blank">Shop</a>
+            <a href="https://shoyubros.com/pages/about-us" target="_blank">Our Story</a>
+            <a href="https://shoyubros.com/blogs/news" target="_blank">Recipes</a>
+            <a href="https://shoyubros.com/collections/all" class="btn-nav" target="_blank">Get Shoyu</a>
         </nav>
     </header>
 
-    <!-- Graza-style Hero: Video background with huge floating bottle and massive text -->
+    <!-- Graza-style Hero: Video background with massive text -->
     <section class="hero-banner">
         <!-- Shoyubros stirfry evaluation video as background -->
         <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
@@ -403,11 +392,8 @@
         </video>
         
         <div class="hero-content">
-            <h1 class="hero-headline">The only</h1>
-            <!-- The cutout bottle sits smack in the middle of the typography -->
-            <img class="hero-bottle" src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Bottle">
-            <h1 class="hero-headline"><i>UMAMI</i> you need.</h1>
-            <a href="#" class="btn-huge">Shop First Draw</a>
+            <h1 class="hero-headline">The only <br><i>UMAMI</i><br> you need.</h1>
+            <a href="https://shoyubros.com/collections/all" class="btn-huge" target="_blank">Shop First Draw</a>
         </div>
     </section>
 
@@ -433,7 +419,7 @@
                 <h2>Unique &amp; fragrant.</h2>
                 <p>Arguably one of the best soy sauces in Malaysia. First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
                 <div>
-                    <a href="#" class="btn-huge">Discover our process</a>
+                    <a href="https://shoyubros.com/pages/about-us" class="btn-huge" target="_blank">Discover our process</a>
                 </div>
             </div>
         </section>
@@ -464,10 +450,11 @@
     <footer>
         <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
         <div class="footer-links">
-            <a href="#">Shop</a>
-            <a href="#">About</a>
-            <a href="#">Instagram</a>
-            <a href="#">Contact</a>
+            <a href="https://shoyubros.com/collections/all" target="_blank">Shop</a>
+            <a href="https://shoyubros.com/pages/about-us" target="_blank">About</a>
+            <a href="https://www.instagram.com/shoyubros/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/shoyubros/" target="_blank">Facebook</a>
+            <a href="https://shoyubros.com/pages/contact" target="_blank">Contact</a>
         </div>
         <p style="margin-top: 2rem; opacity: 0.8; font-size: 1.2rem; font-weight: 700; color: var(--bg-color);">&copy; 2026 Shoyu Bros. All rights reserved.</p>
     </footer>
