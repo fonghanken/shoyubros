@@ -9,7 +9,7 @@
         :root {
             --bg-color: #f5f5f5;
             --text-color: #000000;
-            --primary-color: #d4af37;
+            --primary-color: #d4af37; /* Gold */
             --primary-dark: #b29126;
             --border-color: #000000;
             --border-width: 4px;
@@ -19,9 +19,7 @@
             --font-body: 'Rubik', sans-serif;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -32,17 +30,17 @@
             overflow-x: hidden;
         }
 
-        /* Top Marquee (Graza style) */
+        /* Top Marquee */
         .marquee {
             background-color: var(--text-color);
             color: var(--primary-color);
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             white-space: nowrap;
             overflow: hidden;
             display: flex;
             font-family: var(--font-body);
             font-weight: 900;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -52,16 +50,14 @@
             animation: marquee 12s linear infinite;
         }
 
-        .marquee span {
-            margin: 0 1.5rem;
-        }
+        .marquee span { margin: 0 1.5rem; }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Header / Navbar */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -74,10 +70,7 @@
             z-index: 100;
         }
 
-        .logo img {
-            height: 50px;
-            display: block;
-        }
+        .logo img { height: 50px; display: block; }
 
         nav {
             display: flex;
@@ -112,52 +105,112 @@
             cursor: pointer;
             box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
             transition: transform 0.1s, box-shadow 0.1s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .btn:hover {
-            background-color: var(--primary-color);
-        }
-
+        .btn:hover { background-color: var(--primary-color); }
         .btn:active {
             transform: translate(var(--shadow-offset), var(--shadow-offset));
             box-shadow: 0px 0px 0px var(--border-color);
         }
 
-        /* Hero Section */
-        .hero {
+        /* Massive Full-Width Hero Section (Like Graza's banner) */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            background-image: url('https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484');
+            background-size: cover;
+            background-position: center;
+            border-bottom: var(--border-width) solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-banner-content {
+            position: relative;
+            z-index: 2;
+            background: var(--bg-color);
+            border: var(--border-width) solid var(--border-color);
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            box-shadow: 12px 12px 0px var(--border-color);
+            transform: rotate(-2deg);
+        }
+
+        .hero-banner h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            color: var(--text-color);
+        }
+        
+        .hero-banner h1 i {
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .hero-banner p {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0 2rem;
+            max-width: 500px;
+        }
+
+        /* Wavy divider */
+        .wavy {
+            height: 60px;
+            background-color: var(--primary-color);
+            background-image: url("data:image/svg+xml,%3Csvg width='120' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q 30 30, 60 15 T 120 15' fill='none' stroke='%23000' stroke-width='4'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            background-position: center;
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+        
+        /* 50/50 Split Section */
+        .split-section {
             display: flex;
             align-items: stretch;
-            min-height: 80vh;
+            min-height: 70vh;
             border-bottom: var(--border-width) solid var(--border-color);
         }
 
-        .hero-text-container {
+        .split-text {
             flex: 1;
             padding: 5rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             border-right: var(--border-width) solid var(--border-color);
-            background-color: var(--bg-color);
+            background-color: var(--primary-color);
         }
 
-        .hero h1 {
+        .split-text h2 {
             font-family: var(--font-heading);
-            font-size: clamp(4rem, 8vw, 7.5rem);
+            font-size: clamp(3rem, 6vw, 6rem);
             font-weight: 900;
             line-height: 0.95;
             margin: 0 0 2rem 0;
             letter-spacing: -3px;
         }
 
-        .hero h1 i {
-            color: var(--primary-color);
-            -webkit-text-stroke: 2px var(--border-color);
-            font-style: italic;
-        }
-
-        .hero p {
+        .split-text p {
             font-size: 1.5rem;
             line-height: 1.4;
             margin-bottom: 3rem;
@@ -165,20 +218,20 @@
             max-width: 600px;
         }
 
-        .hero-image-container {
+        .split-image {
             flex: 1;
-            background-color: var(--primary-color);
-            position: relative;
+            background-color: var(--bg-color);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 3rem;
+            position: relative;
         }
 
         .bottle-img-wrapper {
             background: var(--bg-color);
             border: var(--border-width) solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 100px 100px 20px 20px;
             box-shadow: 12px 12px 0px var(--border-color);
             overflow: hidden;
             width: 80%;
@@ -190,16 +243,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* Wavy divider */
-        .wavy {
-            height: 60px;
-            background-color: var(--primary-color);
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 Q 30 30, 60 15 T 120 15' fill='none' stroke='%23000' stroke-width='4'/%3E%3C/svg%3E");
-            background-repeat: repeat-x;
-            background-position: center;
-            border-bottom: var(--border-width) solid var(--border-color);
         }
 
         /* Features Section */
@@ -237,7 +280,7 @@
         
         .feature-card:nth-child(2) {
             transform: rotate(2deg);
-            background: var(--bg-color);
+            background: #ffffff;
         }
         
         .feature-card:nth-child(3) {
@@ -274,12 +317,22 @@
             margin: 0;
         }
 
+        /* Banner Break */
+        .banner-break {
+            width: 100%;
+            height: 60vh;
+            background-image: url('https://shoyubros.com/cdn/shop/files/strifry_banner2_2048x.jpg?v=1626941187');
+            background-size: cover;
+            background-position: center;
+            border-top: var(--border-width) solid var(--border-color);
+            border-bottom: var(--border-width) solid var(--border-color);
+        }
+
         /* Footer */
         footer {
             background-color: var(--text-color);
             color: var(--primary-color);
             padding: 6rem 4rem;
-            border-top: var(--border-width) solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -289,7 +342,7 @@
         footer img {
             height: 120px;
             margin-bottom: 2rem;
-            filter: invert(75%) sepia(35%) saturate(760%) hue-rotate(5deg) brightness(95%) contrast(93%); /* approx hex #d4af37 */
+            filter: invert(75%) sepia(35%) saturate(760%) hue-rotate(5deg) brightness(95%) contrast(93%);
         }
         
         .footer-links {
@@ -311,32 +364,17 @@
         }
 
         @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-            }
-            .hero-text-container {
+            .split-section { flex-direction: column; }
+            .split-text {
                 border-right: none;
                 border-bottom: var(--border-width) solid var(--border-color);
                 padding: 3rem 2rem;
                 text-align: center;
             }
-            .hero h1 {
-                font-size: 4.5rem;
-            }
-            .hero-image-container {
-                padding: 3rem 2rem;
-            }
-            header {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .features-wrapper {
-                padding: 4rem 2rem;
-            }
+            .split-image { padding: 3rem 2rem; }
+            header { flex-direction: column; gap: 2rem; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .hero-banner-content { padding: 2rem; transform: rotate(0deg); }
         }
     </style>
 </head>
@@ -377,15 +415,25 @@
         <a href="#" class="btn">Get Shoyu</a>
     </header>
 
-    <section class="hero">
-        <div class="hero-text-container">
+    <!-- Massive Full-Width Hero Section -->
+    <section class="hero-banner">
+        <div class="hero-banner-content">
             <h1>The only <br><i>UMAMI</i><br> you need.</h1>
-            <p>Arguably one of the best soy sauce in Malaysia. First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
+            <p>Arguably one of the best soy sauce in Malaysia.</p>
+            <a href="#" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- 50/50 Split Layout commonly used in Graza -->
+    <section class="split-section">
+        <div class="split-text">
+            <h2>Unique and fragrant.</h2>
+            <p>First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
             <div>
-                <a href="#" class="btn">Shop First Draw</a>
+                <a href="#" class="btn">Discover our process</a>
             </div>
         </div>
-        <div class="hero-image-container">
+        <div class="split-image">
             <div class="bottle-img-wrapper">
                 <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Premium Soy Sauce">
             </div>
@@ -408,12 +456,15 @@
                 <p>Made strictly from premium Non GMO Canadian soy beans to ensure the highest quality and safety.</p>
             </div>
             <div class="feature-card">
-                <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Stirfry Dish">
+                <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_1080x.jpg?v=1624440332" alt="Aged Shoyu">
                 <h3>NO MSG Added</h3>
                 <p>Pure, unadulterated umami. We let the natural aging process do the heavy lifting so you get authentic taste.</p>
             </div>
         </div>
     </section>
+
+    <!-- Break Banner -->
+    <div class="banner-break"></div>
 
     <footer>
         <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
