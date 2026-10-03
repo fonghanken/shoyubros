@@ -322,34 +322,40 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-graza-dark text-graza-cream px-8 py-16 md:py-20">
-        <!-- Massive Footer Image Banner -->
-        <div class="max-w-7xl mx-auto mb-16">
-            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Shoyu Bros Stirfry" class="w-full h-64 md:h-96 object-cover rounded-[40px] shadow-lg">
+    <footer class="bg-graza-dark text-graza-cream pt-0 pb-16 md:pb-20">
+        
+        <!-- Stretched Newsletter Banner -->
+        <div class="relative w-full h-[60vh] min-h-[500px] mb-16 flex flex-col justify-end">
+            <!-- Stretched Background Image -->
+            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Shoyu Bros Stirfry" class="absolute inset-0 w-full h-full object-cover">
+            
+            <!-- Dark Gradient Overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-graza-dark via-graza-dark/50 to-transparent"></div>
+            
+            <!-- Newsletter Content aligned to the bottom -->
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-8 pb-12 md:pb-16">
+                <div class="max-w-3xl">
+                    <h3 class="font-serif text-5xl md:text-7xl mb-8 leading-[0.95] text-graza-cream">Friends let friends know about good umami.</h3>
+                    <form class="flex flex-col sm:flex-row gap-4 max-w-xl">
+                        <input type="email" placeholder="Your email address" class="flex-1 bg-graza-cream text-graza-dark px-6 py-4 rounded-full font-medium text-lg focus:outline-none focus:ring-4 focus:ring-graza-lime">
+                        <button type="submit" class="btn-lime px-10 py-4 rounded-full font-bold uppercase text-lg shrink-0 border-[2px] border-graza-dark">Sign Up</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-            <!-- Newsletter -->
-            <div>
-                <h3 class="font-serif text-4xl md:text-5xl mb-8 leading-tight">Friends let friends know about good umami.</h3>
-                <form class="flex flex-col sm:flex-row gap-4">
-                    <input type="email" placeholder="Your email address" class="flex-1 bg-graza-cream text-graza-dark px-6 py-4 rounded-full font-medium text-lg focus:outline-none focus:ring-4 focus:ring-graza-lime">
-                    <button type="submit" class="btn-lime px-8 py-4 rounded-full font-bold uppercase text-lg">Sign Up</button>
-                </form>
-            </div>
-            <!-- Links -->
-            <div class="flex flex-col md:items-end justify-between">
-                <nav class="flex flex-col gap-4 font-bold text-lg text-left md:text-right">
-                    <a href="#" class="hover:text-graza-lime transition-colors">Refund Policy</a>
-                    <a href="#" class="hover:text-graza-lime transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-graza-lime transition-colors">Terms And Conditions</a>
-                    <a href="https://shoyubros.com/pages/about-us" class="hover:text-graza-lime transition-colors">About Us</a>
-                    <a href="#" class="hover:text-graza-lime transition-colors">Shipping Policy</a>
-                </nav>
-                <div class="mt-12 font-medium text-graza-cream opacity-60 flex flex-col md:items-end">
-                    <a href="https://www.instagram.com/shoyubros/" target="_blank" class="hover:text-graza-lime hover:opacity-100 transition-all mb-2">Instagram</a>
-                    <p>&copy; 2026, Shoyu Bros.</p>
-                </div>
+        <!-- Links & Copyright Grid -->
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+            <nav class="flex flex-wrap gap-x-8 gap-y-4 font-bold text-lg">
+                <a href="#" class="hover:text-graza-lime transition-colors">Refund Policy</a>
+                <a href="#" class="hover:text-graza-lime transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-graza-lime transition-colors">Terms And Conditions</a>
+                <a href="https://shoyubros.com/pages/about-us" class="hover:text-graza-lime transition-colors">About Us</a>
+                <a href="#" class="hover:text-graza-lime transition-colors">Shipping Policy</a>
+            </nav>
+            <div class="font-medium text-graza-cream opacity-60 flex flex-col md:items-end">
+                <a href="https://www.instagram.com/shoyubros/" target="_blank" class="hover:text-graza-lime hover:opacity-100 transition-all mb-2 text-lg font-bold">Instagram</a>
+                <p>&copy; 2026, Shoyu Bros.</p>
             </div>
         </div>
     </footer>
