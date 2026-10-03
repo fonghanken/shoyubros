@@ -3,469 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOYU BROS | An Artisan Malaysia Soy Sauce</title>
-    <!-- Graza-style chunky serif and sans-serif fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Shoyubros Colors mapped to Graza Layout */
-            --bg-color: #f5f5f5; /* Body cream/off-white */
-            --text-color: #000000;
-            --primary-color: #d4af37; /* Replaces Graza's bright yellow/red accents */
-            --hero-bg: #1c1c1c; /* A dark color for the hero behind the video to contrast like Graza's dark green */
-            --border-color: #000000;
-            --border-width: 4px;
-            --shadow-offset: 8px;
-            
-            --font-heading: 'Fraunces', serif;
-            --font-body: 'Rubik', sans-serif;
+    <title>Shoyu Bros | The Only Bro You'll Need</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'shoyu-brown': '#331B10',
+                        'shoyu-yellow': '#F9C80E',
+                        'shoyu-cream': '#FDFBF7',
+                        'shoyu-red': '#E63946',
+                        'shoyu-black': '#1A1A1A',
+                    },
+                    fontFamily: {
+                        'serif': ['Fraunces', 'serif'],
+                        'sans': ['Rubik', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px 0px rgba(26,26,26,1)',
+                        'brutal-sm': '4px 4px 0px 0px rgba(26,26,26,1)',
+                    }
+                }
+            }
         }
+    </script>
 
-        * { box-sizing: border-box; }
-
+    <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--hero-bg); /* The underlying page color is dark for the hero */
-            color: var(--text-color);
-            font-family: var(--font-body);
+            background-color: #FDFBF7;
+            color: #1A1A1A;
             overflow-x: hidden;
         }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 3rem;
-            background-color: var(--text-color); /* Changed to black for high contrast */
-            border-bottom: var(--border-width) solid var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo img { 
-            height: 90px; /* Massively enlarged */
-            display: block; 
-            background-color: var(--bg-color); /* Sticker-style background to pop off the dark header */
-            border-radius: 50%;
-            padding: 4px;
-            border: 3px solid var(--primary-color);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--bg-color); /* Light text on dark background */
-            font-weight: 900;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 4px;
-        }
-
-        .btn-nav {
-            background-color: var(--primary-color);
-            color: var(--text-color) !important;
-            padding: 0.5rem 1.5rem;
-            border: 3px solid var(--bg-color);
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 1rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 4px 4px 0px var(--bg-color);
-            transition: transform 0.1s, box-shadow 0.1s;
-        }
-
-        .btn-nav:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0px var(--bg-color);
-        }
-
-        /* Graza-style Hero (Massive video background, centered cutout bottle) */
-        .hero-banner {
-            position: sticky;
-            top: 0;
+        .marquee-container {
             width: 100%;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
             overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.8;
-        }
-        
-        /* Dark overlay to make text pop */
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .hero-headline {
-            font-family: var(--font-heading);
-            font-size: clamp(4rem, 10vw, 9rem);
-            font-weight: 900;
-            margin: 0;
-            line-height: 1.1;
-            color: var(--bg-color); /* White text like Graza hero */
-            text-transform: uppercase;
-            text-shadow: 4px 4px 0px var(--border-color);
-            letter-spacing: -2px;
-            z-index: 4;
-        }
-
-        .hero-headline i {
-            color: var(--primary-color);
-            font-style: italic;
-        }
-
-        .btn-huge {
-            margin-top: 2rem;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 1rem 3rem;
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            text-decoration: none;
-            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--border-color);
-            transition: transform 0.1s, box-shadow 0.1s;
-            z-index: 6;
-        }
-        
-        .btn-huge:active {
-            transform: translate(var(--shadow-offset), var(--shadow-offset));
-            box-shadow: 0px 0px 0px var(--border-color);
-        }
-
-        /* Main Content Body - Slides up over the sticky hero */
-        .main-content {
-            position: relative;
-            z-index: 10;
-            background-color: var(--bg-color);
-            border-top: var(--border-width) solid var(--border-color);
-            border-radius: 40px 40px 0 0;
-            margin-top: -60px; /* Overlaps hero */
-            padding-top: 2rem;
-        }
-
-        /* Marquee */
-        .marquee {
-            background-color: var(--text-color);
-            color: var(--primary-color);
-            padding: 1rem 0;
             white-space: nowrap;
-            overflow: hidden;
+            background-color: #F9C80E;
+            color: #1A1A1A;
+            border-top: 4px solid #1A1A1A;
+            border-bottom: 4px solid #1A1A1A;
+            padding: 1rem 0;
             display: flex;
-            font-family: var(--font-body);
-            font-weight: 900;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-bottom: var(--border-width) solid var(--border-color);
-            border-top: var(--border-width) solid var(--border-color);
+            align-items: center;
         }
 
         .marquee-content {
-            display: flex;
-            animation: marquee 12s linear infinite;
+            display: inline-block;
+            animation: marquee 15s linear infinite;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            text-transform: uppercase;
         }
-
-        .marquee span { margin: 0 1.5rem; }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* 50/50 Split Layout commonly used in Graza */
-        .split-section {
-            display: flex;
-            align-items: stretch;
-            border-bottom: var(--border-width) solid var(--border-color);
+        .border-brutal {
+            border: 4px solid #1A1A1A;
         }
 
-        .split-image {
-            flex: 1;
-            background-color: var(--primary-color);
-            border-right: var(--border-width) solid var(--border-color);
-            padding: 4rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .split-image img {
-            width: 100%;
-            height: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 30px;
-            box-shadow: 12px 12px 0px var(--border-color);
-            transform: rotate(-2deg);
-        }
-
-        .split-text {
-            flex: 1;
-            padding: 6rem 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: var(--bg-color);
-        }
-
-        .split-text h2 {
-            font-family: var(--font-heading);
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            font-weight: 900;
-            line-height: 0.95;
-            margin: 0 0 1.5rem 0;
-            letter-spacing: -2px;
-        }
-
-        .split-text p {
-            font-size: 1.5rem;
-            line-height: 1.4;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        /* Features Section */
-        .features-wrapper {
-            padding: 8rem 4rem;
-            background-color: var(--bg-color);
-            border-bottom: var(--border-width) solid var(--border-color);
-        }
-
-        .features-header {
-            text-align: center;
-            font-family: var(--font-heading);
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 5rem;
-            letter-spacing: -2px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .feature-card {
-            background: var(--bg-color);
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 30px;
-            padding: 2rem;
-            box-shadow: 12px 12px 0px var(--border-color);
-            text-align: left;
-        }
-
-        .feature-card:nth-child(1) { background: var(--primary-color); transform: translateY(20px); }
-        .feature-card:nth-child(2) { background: var(--bg-color); }
-        .feature-card:nth-child(3) { background: var(--primary-color); transform: translateY(-20px); }
-
-        .feature-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border: var(--border-width) solid var(--border-color);
-            border-radius: 20px;
-            margin-bottom: 2rem;
-        }
-
-        .feature-card h3 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin: 0 0 1rem 0;
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-
-        .feature-card p {
-            line-height: 1.4;
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            padding: 6rem 4rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        footer img {
-            height: 80px;
-            margin-bottom: 3rem;
-            filter: invert(1); 
+        .btn-brutal {
+            border: 4px solid #1A1A1A;
+            box-shadow: 6px 6px 0px 0px #1A1A1A;
+            transition: all 0.1s ease;
         }
         
-        .footer-links {
-            display: flex;
-            gap: 4rem;
-            margin-bottom: 4rem;
+        .btn-brutal:active {
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px 0px #1A1A1A;
         }
 
-        .footer-links a {
-            color: var(--bg-color);
-            text-decoration: none;
-            font-weight: 900;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 900px) {
-            header { flex-direction: row; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; }
-            nav { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
-            .logo img { height: 60px; }
-            .hero-headline { font-size: 4rem; }
-            .split-section { flex-direction: column-reverse; }
-            .split-text { padding: 4rem 2rem; text-align: center; border-right: none; }
-            .split-image { padding: 3rem 2rem; border-right: none; border-bottom: var(--border-width) solid var(--border-color); }
-            .features-wrapper { padding: 4rem 2rem; }
-            .feature-card:nth-child(n) { transform: none; }
-            .footer-links { flex-direction: column; gap: 2rem; }
+        .doodle {
+            stroke: #1A1A1A;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased">
 
-    <header>
-        <a href="https://shoyubros.com/" class="logo" target="_blank">
-            <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
+    <!-- Top Banner -->
+    <div class="bg-shoyu-brown text-shoyu-cream text-center py-3 font-bold text-sm tracking-widest border-b-4 border-shoyu-black uppercase">
+        Enjoy a free shipping code by us 'SHOYUSALE' (minimum purchase of 2 bottles)
+    </div>
+
+    <!-- Sticky Nav -->
+    <header class="sticky top-0 z-50 bg-shoyu-cream border-b-4 border-shoyu-black px-6 py-4 flex justify-between items-center">
+        <a href="https://shoyubros.com/" class="flex items-center" target="_blank">
+            <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo" class="h-16 w-16 bg-shoyu-yellow rounded-full border-4 border-shoyu-black p-1">
         </a>
-        <nav>
-            <a href="https://shoyubros.com/collections/all" target="_blank">Shop</a>
-            <a href="https://shoyubros.com/pages/about-us" target="_blank">Our Story</a>
-            <a href="https://shoyubros.com/blogs/news" target="_blank">Recipes</a>
-            <a href="https://shoyubros.com/collections/all" class="btn-nav" target="_blank">Get Shoyu</a>
+        <nav class="hidden md:flex gap-8 items-center font-black text-xl uppercase tracking-wide">
+            <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Home</a>
+            <a href="https://shoyubros.com/collections/all" target="_blank" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Product</a>
+            <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Singapore Shop</a>
         </nav>
+        <a href="https://shoyubros.com/cart" target="_blank" class="bg-shoyu-yellow text-shoyu-black px-8 py-3 rounded-full font-black text-lg uppercase btn-brutal">
+            Cart (0)
+        </a>
     </header>
 
-    <!-- Graza-style Hero: Video background with massive text -->
-    <section class="hero-banner">
-        <!-- Shoyubros stirfry evaluation video as background -->
-        <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
-            <source src="stirfry-evaluate-04.mp4" type="video/mp4">
-        </video>
-        
-        <div class="hero-content">
-            <h1 class="hero-headline">The only <br><i>UMAMI</i><br> you need.</h1>
-            <a href="https://shoyubros.com/collections/all" class="btn-huge" target="_blank">Shop First Draw</a>
+    <!-- Hero Section -->
+    <section class="flex flex-col md:flex-row items-stretch border-b-4 border-shoyu-black min-h-[85vh]">
+        <div class="flex-1 p-8 md:p-16 flex flex-col justify-center bg-shoyu-cream border-b-4 md:border-b-0 md:border-r-4 border-shoyu-black relative overflow-hidden">
+            <!-- Doodle accent -->
+            <svg class="absolute top-10 right-10 w-24 h-24 opacity-20 rotate-12" viewBox="0 0 100 100">
+                <path class="doodle" d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill="#F9C80E"/>
+            </svg>
+            <h1 class="font-serif text-[5rem] md:text-[7rem] font-black leading-[0.85] mb-6 tracking-tight text-shoyu-brown relative z-10">
+                THE ONLY BRO<br>YOU'LL NEED.
+            </h1>
+            <p class="font-sans text-xl md:text-2xl font-bold mb-10 text-shoyu-black max-w-lg leading-relaxed relative z-10">
+                The magic shoyu that brings out the best in your dishes. Be prepared for an umami experience.
+            </p>
+            <div class="relative z-10">
+                <a href="https://shoyubros.com/collections/all" target="_blank" class="inline-block bg-shoyu-red text-shoyu-cream px-10 py-4 rounded-full font-black text-2xl uppercase btn-brutal">
+                    Shop Now
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 bg-shoyu-yellow flex items-center justify-center p-8 relative overflow-hidden">
+            <!-- Doodle starburst background -->
+            <svg class="absolute w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="doodle" d="M10,10 Q50,0 90,10 Q100,50 90,90 Q50,100 10,90 Q0,50 10,10" fill="#fff" />
+            </svg>
+            <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_37eba9bd-175b-4a35-aeee-f732bfc5f5c5.jpg?v=1628219282" alt="Shoyu Bros Bottle" class="w-4/5 max-w-md border-brutal shadow-brutal rounded-3xl relative z-10 bg-white rotate-3 hover:rotate-0 transition-transform duration-300">
         </div>
     </section>
 
-    <!-- The main body content overlaps the hero with rounded corners -->
-    <main class="main-content">
+    <!-- Product Spotlight -->
+    <section class="py-24 px-6 md:px-12 bg-shoyu-cream border-b-4 border-shoyu-black relative">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 relative">
+                <!-- Decorative element -->
+                <div class="absolute -top-8 -left-8 w-32 h-32 bg-shoyu-yellow rounded-full border-4 border-shoyu-black z-0"></div>
+                <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_1080x.jpg?v=1624440332" alt="Artisan Shoyu" class="w-full border-brutal shadow-brutal rounded-[40px] -rotate-2 relative z-10 bg-white">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="font-serif text-5xl md:text-7xl font-black mb-4 text-shoyu-brown leading-none tracking-tight">Artisan Garlic-<br>Infused Shoyu</h2>
+                <h3 class="font-sans text-2xl md:text-3xl font-black uppercase text-shoyu-red mb-8 border-b-4 border-shoyu-black pb-4 inline-block tracking-wide">First pressed soy sauce infused with wild garlic.</h3>
+                <p class="text-2xl font-bold mb-10 leading-snug">
+                    Made from non-GMO Canadian soybeans with absolutely no added MSG. It boasts a unique character with a strong earthy & mushroom scent—<span class="text-shoyu-red underline decoration-4 underline-offset-4">some say it even smells like truffles!</span>
+                </p>
+                <a href="https://shoyubros.com/collections/all" target="_blank" class="inline-block bg-shoyu-yellow text-shoyu-black px-12 py-5 rounded-full font-black text-2xl uppercase btn-brutal">
+                    Add To Cart
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-32 px-6 md:px-12 bg-[#E9E4D4] border-b-4 border-shoyu-black relative">
+        <div class="max-w-7xl mx-auto text-center mb-20">
+            <h2 class="font-serif text-5xl md:text-7xl font-black text-shoyu-brown">Soy sauce the way it should be.</h2>
+        </div>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Block 1 -->
+            <div class="bg-white p-10 border-brutal shadow-brutal rounded-3xl flex flex-col items-center text-center rotate-2 hover:rotate-0 transition-transform">
+                <!-- Soybeans Doodle -->
+                <div class="w-32 h-32 mb-8 rounded-full border-4 border-shoyu-black bg-shoyu-yellow flex items-center justify-center">
+                    <svg class="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="doodle" d="M10 21c-3.3 0-6-2.7-6-6 0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6z"/><path class="doodle" d="M14 3c3.3 0 6 2.7 6 6 0 3.3-2.7 6-6 6M10 15c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                </div>
+                <h3 class="font-serif text-4xl font-black mb-4">The Bean Matters.</h3>
+                <p class="font-bold text-xl leading-snug">Our soy sauce is carefully handpicked and made from a fermented paste of soybeans, roasted grain, brine, and Aspergillus sojae mold.</p>
+            </div>
+            <!-- Block 2 -->
+            <div class="bg-white p-10 border-brutal shadow-brutal rounded-3xl flex flex-col items-center text-center -rotate-2 hover:rotate-0 transition-transform mt-0 md:mt-16">
+                <!-- Sun Doodle -->
+                <div class="w-32 h-32 mb-8 rounded-full border-4 border-shoyu-black bg-shoyu-red flex items-center justify-center text-white">
+                    <svg class="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path class="doodle" d="M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M6.34 17.66l-1.41 1.41 M19.07 4.93l-1.41 1.41"/></svg>
+                </div>
+                <h3 class="font-serif text-4xl font-black mb-4">The Aging Process.</h3>
+                <p class="font-bold text-xl leading-snug">Aged for 9 months under the sun. Combining high-quality natural ingredients and traditional methods to ensure a rich, premium flavor.</p>
+            </div>
+            <!-- Block 3 -->
+            <div class="bg-white p-10 border-brutal shadow-brutal rounded-3xl flex flex-col items-center text-center rotate-1 hover:rotate-0 transition-transform">
+                <!-- Shield Doodle -->
+                <div class="w-32 h-32 mb-8 rounded-full border-4 border-shoyu-black bg-[#4CAF50] flex items-center justify-center text-white">
+                    <svg class="w-16 h-16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path class="doodle" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline class="doodle" points="9 12 11 14 15 10"/></svg>
+                </div>
+                <h3 class="font-serif text-4xl font-black mb-4">Improving Lives.</h3>
+                <p class="font-bold text-xl leading-snug">Know what you're using daily. We go through great measures to implement meticulous quality control at every stage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee Ticker -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            PROUDLY MALAYSIAN! &nbsp;⭑&nbsp; EST. 2020: GREAT THINGS CAN HAPPEN TOO IN A PANDEMIC. &nbsp;⭑&nbsp; INFUSED WITH WILD GARLIC! &nbsp;⭑&nbsp; SOME SAY IT SMELLS LIKE TRUFFLES! &nbsp;⭑&nbsp; NO MSG ADDED. &nbsp;⭑&nbsp; 
+            PROUDLY MALAYSIAN! &nbsp;⭑&nbsp; EST. 2020: GREAT THINGS CAN HAPPEN TOO IN A PANDEMIC. &nbsp;⭑&nbsp; INFUSED WITH WILD GARLIC! &nbsp;⭑&nbsp; SOME SAY IT SMELLS LIKE TRUFFLES! &nbsp;⭑&nbsp; NO MSG ADDED. &nbsp;⭑&nbsp;
+        </div>
+    </div>
+
+    <!-- Press / Social Proof -->
+    <section class="py-24 px-6 md:px-12 bg-shoyu-brown text-shoyu-cream border-b-4 border-shoyu-black text-center relative overflow-hidden">
+        <!-- Abstract wavy background doodle -->
+        <svg class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-50,50 Q150,250 350,50 T750,150 T1150,50" fill="none" stroke="#FDFBF7" stroke-width="12" stroke-linecap="round"/>
+            <path d="M-50,250 Q150,50 350,250 T750,50 T1150,250" fill="none" stroke="#FDFBF7" stroke-width="12" stroke-linecap="round"/>
+        </svg>
         
-        <div class="marquee">
-            <div class="marquee-content">
-                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
-                <span>✦</span>
-                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
-                <span>✦</span>
-                <span>FIRST DRAW SOY SAUCE ✦ NON GMO CANADIAN SOY BEANS ✦ NO MSG ADDED</span>
-                <span>✦</span>
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="font-serif text-5xl md:text-7xl font-black mb-16 text-shoyu-yellow">Don't just take it from your Bros.</h2>
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 md:gap-12 mb-16">
+                <!-- Press 1 -->
+                <div class="bg-shoyu-cream text-shoyu-black p-10 border-brutal shadow-brutal rounded-3xl rotate-2 w-full md:w-1/2 flex flex-col justify-center">
+                    <h4 class="font-black text-3xl uppercase mb-3">Eat Drink KL</h4>
+                    <p class="font-bold text-shoyu-red text-xl">(2021 write up)</p>
+                </div>
+                <!-- Press 2 -->
+                <div class="bg-shoyu-yellow text-shoyu-black p-10 border-brutal shadow-brutal rounded-3xl -rotate-2 w-full md:w-1/2 flex flex-col justify-center">
+                    <h4 class="font-black text-3xl uppercase mb-3">Malay Mail</h4>
+                    <p class="font-bold text-shoyu-red text-xl">(June 2020 Review)</p>
+                </div>
+            </div>
+            <a href="https://shoyubros.com/pages/about-us" target="_blank" class="inline-block font-black text-3xl text-white hover:text-shoyu-yellow uppercase tracking-wider underline decoration-4 underline-offset-8 transition-colors">
+                Read more about us ➛
+            </a>
+        </div>
+    </section>
+
+    <!-- Wholesale / B2B -->
+    <section class="py-24 px-6 md:px-12 bg-shoyu-red border-b-4 border-shoyu-black text-center">
+        <h2 class="font-serif text-5xl md:text-[6rem] leading-none font-black text-shoyu-black mb-6">Interested to be a reseller?</h2>
+        <p class="font-sans text-3xl font-bold text-white mb-12 max-w-2xl mx-auto">
+            Bring the umami to your customers.
+        </p>
+        <a href="mailto:artisanlabb@gmail.com" class="inline-block bg-white text-shoyu-black px-12 py-5 rounded-full font-black text-2xl uppercase btn-brutal">
+            Email artisanlabb@gmail.com
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-shoyu-cream px-6 md:px-12 py-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <!-- Newsletter -->
+            <div>
+                <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo" class="h-24 w-24 bg-shoyu-yellow rounded-full border-4 border-shoyu-black p-2 mb-8">
+                <h3 class="font-serif text-4xl md:text-5xl font-black text-shoyu-brown mb-6 leading-tight">Friends let friends know about good umami.</h3>
+                <form class="flex flex-col sm:flex-row mt-6 gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-1 bg-white border-4 border-shoyu-black px-6 py-4 rounded-full font-bold text-xl focus:outline-none focus:ring-4 focus:ring-shoyu-yellow shadow-brutal-sm">
+                    <button type="submit" class="bg-shoyu-black text-white px-10 py-4 rounded-full font-black uppercase text-xl hover:bg-shoyu-red transition-colors btn-brutal">Sign Up</button>
+                </form>
+            </div>
+            <!-- Links -->
+            <div class="flex flex-col md:items-end justify-between">
+                <nav class="flex flex-col gap-4 font-black text-2xl uppercase text-shoyu-black text-left md:text-right">
+                    <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Refund Policy</a>
+                    <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Privacy Policy</a>
+                    <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Terms And Conditions</a>
+                    <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">About Us</a>
+                    <a href="#" class="hover:text-shoyu-red hover:underline decoration-4 underline-offset-4">Shipping Policy</a>
+                </nav>
+                <div class="mt-12 font-bold text-xl flex flex-col md:items-end">
+                    <a href="https://www.instagram.com/shoyubros/" target="_blank" class="hover:text-shoyu-red mb-2 uppercase">Instagram</a>
+                    <p>&copy; 2026, Shoyu Bros.</p>
+                </div>
             </div>
         </div>
-
-        <section class="split-section">
-            <div class="split-image">
-                <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_1080x.jpg?v=1624440332" alt="Aged Shoyu Details">
-            </div>
-            <div class="split-text">
-                <h2>Unique &amp; fragrant.</h2>
-                <p>Arguably one of the best soy sauces in Malaysia. First in the market to have such a unique and fragrant soy sauce. A premium product that will definitely capture your palate.</p>
-                <div>
-                    <a href="https://shoyubros.com/pages/about-us" class="btn-huge" target="_blank">Discover our process</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-wrapper">
-            <h2 class="features-header">Real ingredients.</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/IMG_20210602_091210_e92b13bc-4c82-41a3-99b4-e0fbccdbf2bc_720x.jpg" alt="Natural Fermentation">
-                    <h3>Natural Fermentation</h3>
-                    <p>First draw soy sauce with natural fermentation. Aged perfectly to bring out the deepest flavors for your daily meals.</p>
-                </div>
-                <div class="feature-card">
-                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Non GMO Canadian Soy Beans">
-                    <h3>Non GMO Beans</h3>
-                    <p>Made strictly from premium Non GMO Canadian soy beans to ensure the highest quality and safety.</p>
-                </div>
-                <div class="feature-card">
-                    <img class="feature-img" src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Stirfry Dish">
-                    <h3>NO MSG Added</h3>
-                    <p>Pure, unadulterated umami. We let the natural aging process do the heavy lifting so you get authentic taste.</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <img src="https://shoyubros.com/cdn/shop/files/SHOYU_BROS_LOGO_1_300x300.png" alt="Shoyu Bros Logo">
-        <div class="footer-links">
-            <a href="https://shoyubros.com/collections/all" target="_blank">Shop</a>
-            <a href="https://shoyubros.com/pages/about-us" target="_blank">About</a>
-            <a href="https://www.instagram.com/shoyubros/" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/shoyubros/" target="_blank">Facebook</a>
-            <a href="https://shoyubros.com/pages/contact" target="_blank">Contact</a>
-        </div>
-        <p style="margin-top: 2rem; opacity: 0.8; font-size: 1.2rem; font-weight: 700; color: var(--bg-color);">&copy; 2026 Shoyu Bros. All rights reserved.</p>
     </footer>
 
 </body>
