@@ -53,11 +53,8 @@
             overflow-x: hidden;
         }
 
-        /* Smooth rounded overlap for the main content */
-        .main-overlap {
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-            margin-top: -40px;
+        /* Main Content wrapper */
+        .main-content {
             position: relative;
             z-index: 20;
             background-color: #F6E6D9;
@@ -109,7 +106,8 @@
         .hero-video-container {
             position: relative;
             width: 100%;
-            height: 90vh;
+            height: 75vh;
+            min-height: 600px;
             background-color: #3C422E;
             display: flex;
             align-items: center;
@@ -172,28 +170,30 @@
         </nav>
     </header>
 
-    <!-- Hero Section (Graza style: Full video background, massive elegant serif text, floating bottle) -->
-    <section class="hero-video-container">
-        <!-- Shoyubros video background -->
-        <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
-            <source src="stirfry-evaluate-04.mp4" type="video/mp4">
-        </video>
-        
-        <div class="hero-content w-full px-4">
-            <h1 class="font-serif text-[4rem] md:text-[8rem] leading-[0.9] text-graza-cream mb-6">
-                The Only Bro<br>You'll Need.
-            </h1>
-            <p class="font-sans text-xl md:text-2xl text-graza-cream max-w-lg mx-auto font-medium mb-8">
-                The magic shoyu that brings out the best in your dishes. Be prepared for an umami experience.
-            </p>
-            <a href="https://shoyubros.com/collections/all" target="_blank" class="btn-lime px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wide inline-block">
-                Shop Now
-            </a>
-        </div>
-    </section>
+    <!-- Hero Section (Graza style: Contained rounded block) -->
+    <div class="px-4 md:px-8 pt-6 pb-12 bg-graza-cream">
+        <section class="hero-video-container rounded-[40px] shadow-sm">
+            <!-- Shoyubros video background -->
+            <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
+                <source src="stirfry-evaluate-04.mp4" type="video/mp4">
+            </video>
+            
+            <div class="hero-content w-full px-4">
+                <h1 class="font-serif text-[4rem] md:text-[8rem] leading-[0.9] text-graza-cream mb-6">
+                    The Only Bro<br>You'll Need.
+                </h1>
+                <p class="font-sans text-xl md:text-2xl text-graza-cream max-w-lg mx-auto font-medium mb-8">
+                    The magic shoyu that brings out the best in your dishes. Be prepared for an umami experience.
+                </p>
+                <a href="https://shoyubros.com/collections/all" target="_blank" class="btn-lime px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wide inline-block">
+                    Shop Now
+                </a>
+            </div>
+        </section>
+    </div>
 
-    <!-- Main Content Overlapping the Hero -->
-    <main class="main-overlap pt-16 pb-24">
+    <!-- Main Content -->
+    <main class="main-content pb-24">
         
         <!-- Marquee (Graza puts these directly beneath sections) -->
         <div class="marquee-container mb-24">
