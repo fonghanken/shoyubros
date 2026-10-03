@@ -162,22 +162,32 @@
 
 
         <!-- Header (Transparent initially, solid on scroll) -->
-        <header id="main-nav" class="w-full px-6 md:px-10 py-3 flex justify-between items-center transition-all duration-300 bg-transparent border-b-[2px] border-transparent text-white">
-            <!-- Left Links -->
-            <nav class="hidden md:flex flex-1 gap-8 font-sans font-bold text-[13px] uppercase tracking-[0.1em] items-center">
-                <a href="https://shoyubros.com/collections/all" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">Shop</a>
-                <a href="https://shoyubros.com/" target="_blank" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
-            </nav>
+        <header id="main-nav" class="w-full px-4 md:px-10 py-3 flex justify-between items-center transition-all duration-300 bg-transparent border-b-[2px] border-transparent text-white">
+            
+            <!-- Mobile Menu Button (Hamburger) & Desktop Links -->
+            <div class="flex flex-1 items-center gap-4">
+                <button class="md:hidden flex items-center p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <nav class="hidden md:flex gap-8 font-sans font-bold text-[13px] uppercase tracking-[0.1em] items-center">
+                    <a href="https://shoyubros.com/collections/all" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">Shop</a>
+                    <a href="https://shoyubros.com/" target="_blank" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
+                </nav>
+            </div>
             
             <!-- Center Logo with Glow -->
-            <a href="https://shoyubros.com/" target="_blank" class="flex-shrink-0 mx-auto md:mx-0">
+            <a href="https://shoyubros.com/" target="_blank" class="flex-shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 mx-auto md:mx-0">
                 <img src="logo-cropped.png" alt="Shoyu Bros Logo" class="h-[45px] w-auto object-contain transition-transform hover:scale-105" style="filter: drop-shadow(0 0 15px rgba(255,255,255,1)) drop-shadow(0 0 25px rgba(209,224,48,0.6));">
             </a>
             
             <!-- Right Links -->
-            <nav class="hidden md:flex flex-1 gap-8 justify-end items-center font-sans font-bold text-[13px] uppercase tracking-[0.1em]">
-                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="hover:text-graza-lime transition-colors">Our Story</a>
-                <a href="https://shoyubros.com/cart" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">
+            <nav class="flex flex-1 gap-4 md:gap-8 justify-end items-center font-sans font-bold text-[13px] uppercase tracking-[0.1em]">
+                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="hidden md:block hover:text-graza-lime transition-colors">Our Story</a>
+                <a href="https://shoyubros.com/cart" target="_blank" class="bg-graza-lime text-graza-dark px-5 md:px-6 py-2.5 md:py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">
                     Cart (0)
                 </a>
             </nav>
@@ -325,9 +335,9 @@
     <footer class="bg-graza-dark text-graza-cream pt-0 pb-16 md:pb-20">
         
         <!-- Stretched Newsletter Banner -->
-        <div class="relative w-full h-[60vh] min-h-[500px] mb-16 flex flex-col justify-end">
-            <!-- Stretched Background Image -->
-            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2_720x.jpg" alt="Shoyu Bros Stirfry" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative w-full h-[45vh] min-h-[400px] mb-16 flex flex-col justify-end">
+            <!-- Stretched Background Image (High-res) -->
+            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" alt="Shoyu Bros Stirfry" class="absolute inset-0 w-full h-full object-cover">
             
             <!-- Dark Gradient Overlay for text readability -->
             <div class="absolute inset-0 bg-gradient-to-t from-graza-dark via-graza-dark/50 to-transparent"></div>
