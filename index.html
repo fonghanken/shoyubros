@@ -166,7 +166,7 @@
             
             <!-- Mobile Menu Button (Hamburger) & Desktop Links -->
             <div class="flex flex-1 items-center gap-4">
-                <button class="md:hidden flex items-center p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors">
+                <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors cursor-pointer">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -192,6 +192,31 @@
                 </a>
             </nav>
         </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 z-[100] bg-graza-dark text-white flex flex-col p-6 transform -translate-x-full transition-transform duration-300">
+            <div class="flex justify-between items-center mb-16 mt-2">
+                <button id="close-menu-btn" class="p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors cursor-pointer">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <!-- Pure white version of logo via CSS filter -->
+                <img src="logo-cropped.png" alt="Shoyu Bros Logo" class="h-[40px] w-auto object-contain mr-2" style="filter: brightness(0) invert(1);">
+            </div>
+            
+            <nav class="flex flex-col gap-10 font-serif text-5xl">
+                <a href="https://shoyubros.com/collections/all" class="hover:text-graza-lime transition-colors">Shop</a>
+                <a href="https://shoyubros.com/" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
+                <a href="https://shoyubros.com/pages/about-us" class="hover:text-graza-lime transition-colors">Our Story</a>
+                <a href="https://shoyubros.com/cart" class="hover:text-graza-lime transition-colors">Cart (0)</a>
+            </nav>
+            
+            <div class="mt-auto pb-8">
+                <a href="https://www.instagram.com/shoyubros/" target="_blank" class="font-sans font-bold text-lg uppercase tracking-[0.15em] hover:text-graza-lime transition-colors">Instagram</a>
+            </div>
+        </div>
     </div>
 
     <!-- Hero Section (Full viewport height, video background) -->
@@ -372,6 +397,7 @@
 
     <!-- Scroll script for Navbar -->
     <script>
+        // Scroll script for Navbar
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('main-nav');
             if (window.scrollY > 50) {
@@ -383,6 +409,23 @@
                 nav.classList.add('bg-transparent', 'border-transparent', 'text-white');
                 nav.classList.remove('bg-graza-cream', 'border-graza-dark', 'text-graza-dark');
             }
+        });
+
+        // Mobile Menu Toggle Logic
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling underneath
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+            document.body.style.overflow = '';
         });
     </script>
 </body>
