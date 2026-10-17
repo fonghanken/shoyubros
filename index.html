@@ -43,29 +43,43 @@
   --gold: #D4AF37;
 }
 
-/* Ensure Wordmark accommodates SHOYU BROS perfectly */
+/* Ensure Wordmark accommodates SHOYU BROS monumentally */
 .wordmark {
-  font-size: clamp(3.2rem, 13vw, 16.5rem) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--label), var(--round) !important;
+  font-weight: 800 !important;
+  color: var(--navy) !important;
+  font-size: clamp(5rem, 22vw, 19rem) !important;
+  line-height: 0.78 !important;
   letter-spacing: -0.02em !important;
-  margin-left: 0 !important;
-  text-align: center;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.wordmark .wm-line {
   display: block;
 }
 
 @media (max-width: 640px) {
   .wordmark {
-    font-size: clamp(2.8rem, 15vw, 4.8rem) !important;
-    line-height: 0.9 !important;
-    white-space: normal !important;
+    font-size: clamp(4rem, 24vw, 7.5rem) !important;
+    line-height: 0.8 !important;
   }
 }
 
-.bottle {
+.hero .bottle {
+  position: absolute !important;
+  z-index: 2 !important;
   left: 50% !important;
   top: 55% !important;
-  height: min(72vh, 42rem) !important;
+  height: min(76vh, 48rem) !important;
+  width: auto !important;
   transform: translate(-50%, -50%) rotate(20deg) !important;
-  filter: drop-shadow(36px 30px 28px rgba(26, 43, 107, 0.35)) !important;
+  filter: drop-shadow(40px 36px 36px rgba(26, 43, 107, 0.38)) !important;
+  pointer-events: none !important;
 }
 
 /* Nav logo styling */
@@ -285,9 +299,12 @@
     <span class="jc-date">&nbsp;</span>
   </div>
   
-  <h1 class="wordmark" data-wordmark>SHOYU BROS</h1>
+  <h1 class="wordmark" data-wordmark>
+    <span class="wm-line">SHOYU</span>
+    <span class="wm-line">BROS</span>
+  </h1>
   
-  <img class="bottle" src="shoyubros-bottle-clean.png" alt="Shoyu Bros Artisan Wild Garlic Aged Soy Sauce bottle" width="729" height="180">
+  <img class="bottle" src="shoyu-squeeze-bottle-transparent.png" alt="Shoyu Bros Artisan Wild Garlic Aged Soy Sauce chef squeeze bottle" width="379" height="1029">
   
   <div class="pillrow">
     <a href="#buy"><span class="main-pill" style="display:inline-block;"><span class="jroll"><span>BUY NOW</span><span class="jp2" aria-hidden="true">商品を見る</span></span></span></a>
@@ -592,7 +609,7 @@
           <div class="cell head lab" aria-hidden="true"></div>
           <div class="cell head dojo">
             <img class="hbg" src="vs-barrels.jpg" alt="" aria-hidden="true" width="1600" height="1066">
-            <img class="hbtl" src="shoyubros-bottle-clean.png" alt="Shoyu Bros bottle" width="729" height="180">
+            <img class="hbtl" src="shoyu-squeeze-bottle-transparent.png" alt="Shoyu Bros bottle" width="379" height="1029">
             <span>SHOYU BROS</span>
           </div>
           <div class="cell head gen">
@@ -724,7 +741,7 @@
         <text font-size="14"><textPath href="#ringpath" lang="ja">天日熟成・九ヶ月・野性にんにく・職人の手造り・</textPath></text>
       </svg>
     </span>
-    <img class="rs-btl" src="shoyubros-bottle-clean.png" alt="Shoyu Bros Artisan Soy Sauce Bottle" data-reveal width="729" height="180">
+    <img class="rs-btl" src="shoyu-squeeze-bottle-transparent.png" alt="Shoyu Bros Artisan Soy Sauce Bottle" data-reveal width="379" height="1029">
     <h2 class="rs-huge rs-news" data-reveal>
       <span class="lm"><span class="lm-i">BATCH 004</span></span>
       <span class="lm"><span class="lm-i">DON'T MISS</span></span>
