@@ -44,7 +44,7 @@
 }
 
 /* Ensure Wordmark accommodates SHOYU BROS monumentally */
-.wordmark {
+.hero .wordmark {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -52,10 +52,10 @@
   font-family: var(--label), var(--round) !important;
   font-weight: 800 !important;
   color: var(--navy) !important;
-  font-size: clamp(5rem, 22vw, 19rem) !important;
-  line-height: 0.78 !important;
+  font-size: clamp(5rem, 21vw, 18rem) !important;
+  line-height: 0.8 !important;
   letter-spacing: -0.02em !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   text-align: center !important;
 }
 
@@ -63,10 +63,19 @@
   display: block;
 }
 
-@media (max-width: 640px) {
-  .wordmark {
-    font-size: clamp(4rem, 24vw, 7.5rem) !important;
-    line-height: 0.8 !important;
+@media (max-width: 768px) {
+  .hero .wordmark {
+    font-size: clamp(3.2rem, 19vw, 5.5rem) !important;
+    line-height: 0.84 !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .wordmark {
+    font-size: clamp(2.9rem, 18.5vw, 4.6rem) !important;
+    line-height: 0.84 !important;
+    margin: 0 auto !important;
   }
 }
 
@@ -74,13 +83,34 @@
   position: absolute !important;
   z-index: 2 !important;
   left: 50% !important;
-  top: 55% !important;
-  height: min(76vh, 48rem) !important;
+  top: 53% !important;
+  height: min(74vh, 46rem) !important;
   width: auto !important;
-  transform: translate(-50%, -50%) rotate(20deg) !important;
-  filter: drop-shadow(40px 36px 36px rgba(26, 43, 107, 0.38)) !important;
+  transform: translate(-50%, -50%) rotate(18deg) !important;
+  filter: drop-shadow(32px 30px 32px rgba(26, 43, 107, 0.35)) !important;
   pointer-events: none !important;
 }
+
+@media (max-width: 768px) {
+  .hero .bottle {
+    height: min(44vh, 21rem) !important;
+    top: 47% !important;
+    transform: translate(-50%, -50%) rotate(14deg) !important;
+    filter: drop-shadow(18px 18px 22px rgba(26, 43, 107, 0.28)) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .bottle {
+    height: min(40vh, 18.5rem) !important;
+    top: 45% !important;
+    transform: translate(-50%, -50%) rotate(13deg) !important;
+    filter: drop-shadow(16px 16px 20px rgba(26, 43, 107, 0.25)) !important;
+  }
+}
+
+
+
 
 /* Nav logo styling */
 .nav .mark {
