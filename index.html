@@ -1,432 +1,989 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoyu Bros | The Only Bro You'll Need</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Using Graza's Exact Fonts -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        graza: {
-                            dark: '#3C422E',   /* Dark Olive Green */
-                            lime: '#D1E030',   /* Bright Lime */
-                            cream: '#F6E6D9',  /* Soft Beige/Cream */
-                            white: '#FFFFFF',
-                            red: '#E04A3A'     /* Accent Red */
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"ITC Garamond Condensed"', 'serif'],
-                        sans: ['"Apercu"', 'sans-serif'],
-                        mono: ['"GT Alpina Typewriter"', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHOYU BROS &middot; Artisan Wild Garlic Infused Soy Sauce</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="SHOYU BROS &middot; Artisan Wild Garlic Infused Soy Sauce">
+<meta property="og:description" content="Aged 9 months under the sun in earthenware clay pots. Non-GMO Canadian soybeans infused with wild garlic. Proudly crafted for your everyday table.">
+<meta property="og:url" content="https://shoyubros.com/">
+<meta property="og:image" content="bottle-clean.jpg">
 
-    <style>
-        @font-face {
-            font-family: 'ITC Garamond Condensed';
-            src: url('https://www.graza.co/cdn/shop/t/38/assets/itc-garamond-cond.static.woff2') format('woff2');
-            font-weight: normal;
-        }
-        @font-face {
-            font-family: 'Apercu';
-            src: url('https://www.graza.co/cdn/shop/t/38/assets/apercu-bold.static.woff2') format('woff2');
-            font-weight: bold;
-        }
-        @font-face {
-            font-family: 'GT Alpina Typewriter';
-            src: url('https://www.graza.co/cdn/shop/t/38/assets/gt-alpina-typewriter-light.static.woff2') format('woff2');
-            font-weight: normal;
-        }
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@500;700;900&family=Caveat:wght@500;600&family=Courier+Prime:wght@400;700&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 
-        body {
-            background-color: #F6E6D9; /* graza-cream */
-            color: #3C422E; /* graza-dark */
-            overflow-x: hidden;
-        }
+<!-- Dojo Design System CSS -->
+<link rel="stylesheet" href="dojo.css">
+<link rel="stylesheet" href="dojo-edits.css">
 
-        /* Smooth rounded overlap for the main content */
-        .main-overlap {
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-            margin-top: -60px;
-            position: relative;
-            z-index: 20;
-            background-color: #F6E6D9;
-        }
+<style>
+/* Custom overrides and enhancements for Shoyu Bros */
+@font-face {
+  font-family: 'PP Nikkei Journal';
+  src: url('PPNikkeiJournal-Ultrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
 
-        /* Marquee Animation */
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            background-color: #D1E030; /* graza-lime */
-            color: #3C422E; /* graza-dark */
-            padding: 0.75rem 0;
-            display: flex;
-            align-items: center;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 15s linear infinite;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+:root {
+  --pink-bg: #FBDDE8;
+  --pink-soft-bg: #FDE8F0;
+  --pink-deep: #F59BBB;
+  --pink: #E84D8A;
+  --navy: #1A2B6B;
+  --navy-deep: #12204F;
+  --navy-tint: #C9D2EC;
+  --cream: #FDFBF5;
+  --ink: #1A2B6B;
+  --frame: 14px;
+  --gold: #D4AF37;
+}
 
-        /* Instagram Carousel */
-        @keyframes scroll-carousel {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 12px)); }
-        }
-        .animate-carousel {
-            animation: scroll-carousel 25s linear infinite;
-        }
-        .hover\:pause-animation:hover {
-            animation-play-state: paused;
-        }
+/* Ensure Wordmark accommodates SHOYU BROS perfectly */
+.wordmark {
+  font-size: clamp(3.2rem, 13vw, 16.5rem) !important;
+  letter-spacing: -0.02em !important;
+  margin-left: 0 !important;
+  text-align: center;
+  display: block;
+}
 
-        /* Graza-style buttons */
-        .btn-lime {
-            background-color: #D1E030;
-            color: #3C422E;
-            transition: transform 0.2s ease;
-        }
-        .btn-lime:hover {
-            transform: scale(1.05);
-        }
-        
-        .btn-dark {
-            background-color: #3C422E;
-            color: #D1E030;
-            transition: transform 0.2s ease;
-        }
-        .btn-dark:hover {
-            transform: scale(1.05);
-        }
+@media (max-width: 640px) {
+  .wordmark {
+    font-size: clamp(2.8rem, 15vw, 4.8rem) !important;
+    line-height: 0.9 !important;
+    white-space: normal !important;
+  }
+}
 
-        .hero-video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background-color: #3C422E;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
+.bottle {
+  left: 50% !important;
+  top: 55% !important;
+  height: min(72vh, 42rem) !important;
+  transform: translate(-50%, -50%) rotate(20deg) !important;
+  filter: drop-shadow(36px 30px 28px rgba(26, 43, 107, 0.35)) !important;
+}
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6; /* Darkened to let text pop */
-            z-index: 1;
-        }
+/* Nav logo styling */
+.nav .mark {
+  font-family: var(--label), var(--round);
+  font-weight: 800;
+  color: var(--navy);
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* Shopping Cart Drawer */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 32, 79, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.cart-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(440px, 92vw);
+  background: var(--cream);
+  z-index: 101;
+  box-shadow: -10px 0 40px rgba(26, 43, 107, 0.25);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: calc(var(--frame) + 1.2rem);
+}
+.cart-drawer-overlay.open .cart-drawer {
+  transform: translateX(0);
+}
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid var(--navy-tint);
+}
+.cart-header h3 {
+  font-family: var(--round);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0;
+}
+.cart-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--navy);
+  cursor: pointer;
+  line-height: 1;
+}
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--pink-soft-bg);
+  padding: 1rem;
+  border-radius: 16px;
+}
+.cart-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.cart-item-info {
+  flex: 1;
+}
+.cart-item-info h4 {
+  margin: 0 0 0.3rem 0;
+  font-family: var(--round);
+  font-size: 1rem;
+  color: var(--navy);
+}
+.cart-item-info p {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  color: var(--pink);
+  font-weight: 700;
+}
+.cart-footer {
+  padding-top: 1.2rem;
+  border-top: 2px solid var(--navy-tint);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--round);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.checkout-btn {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 1rem;
+  border-radius: 999px;
+  text-align: center;
+  font-family: var(--round);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s, background 0.2s;
+  display: block;
+}
+.checkout-btn:hover {
+  background: var(--pink);
+  transform: scale(1.02);
+}
 
-        /* Remove underline from links */
-        a {
-            text-decoration: none;
-        }
-    </style>
+/* Toast Notification */
+.shoyu-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--navy);
+  color: var(--cream);
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--round);
+  font-weight: 600;
+  font-size: 0.95rem;
+  z-index: 110;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.shoyu-toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mealcard image aspect ratio */
+.mealcard img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* Film wall images */
+.print img, .print video {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+</style>
 </head>
-<body class="font-sans antialiased">
+<body>
 
-    <!-- Fixed Navigation Container -->
-    <div class="fixed top-0 w-full z-50 flex flex-col">
+<div id="shopify-section-template__main" class="shopify-section">
 
+<!-- FIXED BORDER FRAME (dojo signature) -->
+<div class="frame" aria-hidden="true"></div>
 
-        <!-- Header (Transparent initially, solid on scroll) -->
-        <header id="main-nav" class="w-full px-4 md:px-10 py-3 flex justify-between items-center transition-all duration-300 bg-transparent border-b-[2px] border-transparent text-white">
-            
-            <!-- Mobile Menu Button (Hamburger) & Desktop Links -->
-            <div class="flex flex-1 items-center gap-4">
-                <button id="mobile-menu-btn" class="md:hidden flex items-center p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors cursor-pointer">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </button>
-                <nav class="hidden md:flex gap-8 font-sans font-bold text-[13px] uppercase tracking-[0.1em] items-center">
-                    <a href="https://shoyubros.com/collections/all" target="_blank" class="bg-graza-lime text-graza-dark px-6 py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">Shop</a>
-                    <a href="https://shoyubros.com/" target="_blank" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
-                </nav>
-            </div>
-            
-            <!-- Center Logo with Glow -->
-            <a href="https://shoyubros.com/" target="_blank" class="flex-shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 mx-auto md:mx-0">
-                <img src="logo-cropped.png" alt="Shoyu Bros Logo" class="h-[45px] w-auto object-contain transition-transform hover:scale-105" style="filter: drop-shadow(0 0 15px rgba(255,255,255,1)) drop-shadow(0 0 25px rgba(209,224,48,0.6));">
-            </a>
-            
-            <!-- Right Links -->
-            <nav class="flex flex-1 gap-4 md:gap-8 justify-end items-center font-sans font-bold text-[13px] uppercase tracking-[0.1em]">
-                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="hidden md:block hover:text-graza-lime transition-colors">Our Story</a>
-                <a href="https://shoyubros.com/cart" target="_blank" class="bg-graza-lime text-graza-dark px-5 md:px-6 py-2.5 md:py-3 rounded-full hover:scale-105 transition-transform border-[2px] border-graza-dark">
-                    Cart (0)
-                </a>
-            </nav>
-        </header>
+<!-- SCROLL NAV: appears once user scrolls past hero -->
+<header class="nav dojo-nav dojo-nav--scroll" data-nav aria-hidden="true">
+  <div class="jpclock" data-jpclock aria-label="Time in Singapore & Tokyo">
+    <span class="jc-lab">SG &middot; TOKYO TIME</span>
+    <span class="jc-time">00:00:00</span>
+    <span class="jc-date"></span>
+  </div>
+  <a class="mark" href="#top" aria-label="Shoyu Bros home">SHOYU BROS</a>
+  <nav class="links" aria-label="Main navigation">
+    <a class="nl" href="#story">STORY</a>
+    <a class="nl" href="#difference">DIFFERENCE</a>
+    <a class="nl" href="#meals">MEALS</a>
+    <a class="res" href="#buy">BUY NOW</a>
+    <a class="dojo-cart" href="javascript:void(0)" onclick="openCartDrawer()" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" width="22" height="22">
+        <path d="M3 3h2l2.5 12h11L21 6H6M9 20h.01M18 20h.01" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="9" cy="20" r="1"/>
+        <circle cx="18" cy="20" r="1"/>
+      </svg>
+      <span class="cart-badge" id="nav-cart-count" style="display:none; position:absolute; top:-4px; right:-6px; background:var(--pink); color:#fff; font-size:10px; font-weight:800; border-radius:50%; width:16px; height:16px; line-height:16px; text-align:center;">1</span>
+    </a>
+  </nav>
+</header>
 
-        <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 z-[100] bg-graza-dark text-white flex flex-col p-6 transform -translate-x-full transition-transform duration-300">
-            <div class="flex justify-between items-center mb-16 mt-2">
-                <button id="close-menu-btn" class="p-2 border-[2px] border-transparent hover:text-graza-lime transition-colors cursor-pointer">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <!-- Pure white version of logo via CSS filter -->
-                <img src="logo-cropped.png" alt="Shoyu Bros Logo" class="h-[40px] w-auto object-contain mr-2" style="filter: brightness(0) invert(1);">
-            </div>
-            
-            <nav class="flex flex-col gap-10 font-serif text-5xl">
-                <a href="https://shoyubros.com/collections/all" class="hover:text-graza-lime transition-colors">Shop</a>
-                <a href="https://shoyubros.com/" class="hover:text-graza-lime transition-colors">Singapore Shop</a>
-                <a href="https://shoyubros.com/pages/about-us" class="hover:text-graza-lime transition-colors">Our Story</a>
-                <a href="https://shoyubros.com/cart" class="hover:text-graza-lime transition-colors">Cart (0)</a>
-            </nav>
-            
-            <div class="mt-auto pb-8">
-                <a href="https://www.instagram.com/shoyubros/" target="_blank" class="font-sans font-bold text-lg uppercase tracking-[0.15em] hover:text-graza-lime transition-colors">Instagram</a>
-            </div>
-        </div>
+<!-- HERO POSTER SECTION -->
+<section class="hero" id="top">
+  <div class="jpclock" data-jpclock aria-label="Time in Singapore & Tokyo">
+    <span class="jc-lab">SG &middot; TOKYO TIME</span>
+    <span class="jc-time">00:00:00</span>
+    <span class="jc-date">&nbsp;</span>
+  </div>
+  
+  <h1 class="wordmark" data-wordmark>SHOYU BROS</h1>
+  
+  <img class="bottle" src="shoyubros-bottle-clean.png" alt="Shoyu Bros Artisan Wild Garlic Aged Soy Sauce bottle" width="729" height="180">
+  
+  <div class="pillrow">
+    <a href="#buy"><span class="main-pill" style="display:inline-block;"><span class="jroll"><span>BUY NOW</span><span class="jp2" aria-hidden="true">商品を見る</span></span></span></a>
+  </div>
+</section>
+
+<!-- CLAIM TICKER MARQUEE -->
+<div class="ticker" aria-hidden="true">
+  <div class="track" data-double>
+    <div class="set">
+      <div class="item"><span>SUN-AGED 9 MONTHS</span></div><span class="sep" lang="ja">醤</span>
+      <div class="item"><span>WILD GARLIC INFUSED</span></div><span class="sep" lang="ja">蒜</span>
+      <div class="item"><span>NON-GMO CANADIAN SOYBEANS</span></div><span class="sep" lang="ja">豆</span>
+      <div class="item"><span>ZERO ADDED MSG</span></div><span class="sep" lang="ja">純</span>
+      <div class="item"><span>FIRST PRESSED</span></div><span class="sep" lang="ja">滴</span>
+      <div class="item"><span>TRUFFLE-LIKE AROMA</span></div><span class="sep" lang="ja">香</span>
+      <div class="item"><span>ARTISAN MALAYSIAN SHOYU</span></div><span class="sep" lang="ja">匠</span>
     </div>
+  </div>
+</div>
 
-    <!-- Hero Section (Full viewport height, video background) -->
-    <section class="hero-video-container">
-        <!-- Shoyubros video background -->
-        <video class="hero-video" autoplay loop muted playsinline poster="https://shoyubros.com/cdn/shop/files/BDP06292resized_2048x.jpg?v=1628394484">
-            <source src="stirfry-evaluate-04.mp4" type="video/mp4">
-        </video>
+<!-- STORY GRID: the way shoyu should be made -->
+<section class="storygrid" id="story">
+  <div class="sg-in">
+    <div class="sg-head" data-reveal>
+      <h2>THE WAY SHOYU<br />SHOULD BE MADE.</h2>
+    </div>
+    <div class="sg-grid" data-reveal>
+      <div class="sg-tile txt t-navy pair-a">
+        <p class="sg-kick" lang="ja">九ヶ月の天日熟成</p>
+        <h3>SUN-AGED FOR<br />9 MONTHS.</h3>
+        <p class="sgb">Unlike commercial supermarket soy sauces rushed in giant steel tanks over a few weeks with chemical hydrolysates, Shoyu Bros is aged outdoors in traditional earthenware clay jars under the equatorial sun for 9 long months. That patience develops rich, layered umami with zero added MSG.</p>
+        <a class="sg-cta" href="#buy"><span class="jroll"><span>TASTE THE CRAFT →</span><span class="jp2" aria-hidden="true">製法を見る</span></span></a>
+      </div>
+      <figure class="sg-tile img pair-a">
+        <img src="https://shoyubros.com/cdn/shop/files/IMG_3379_480x480@2x.jpg" alt="Traditional earthenware clay jars aging shoyu under the tropical sun" style="width:100%; height:100%; object-fit:cover;">
+        <figcaption>THE CLAY POTS <em lang="ja">陶器の壺</em></figcaption>
+      </figure>
+      <figure class="sg-tile img pair-b">
+        <video src="stirfry-evaluate-04.mp4" poster="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Sizzling pan stir fry showing fragrant shoyu steam"></video>
+        <figcaption>THE WOK SIZZLE <em lang="ja">鉄鍋の熱</em></figcaption>
+      </figure>
+      <div class="sg-tile txt t-pink pair-b">
+        <p class="sg-kick" lang="ja">野性にんにくの薫り</p>
+        <h3>WILD GARLIC<br />INFUSION.</h3>
+        <p class="sgb">First-pressed aged soy sauce infused with fresh wild garlic. Some say it smells like truffles. An earthy, mushroom-accented culinary secret that turns everyday cooking into an extraordinary umami feast.</p>
+        <p class="sg-jp" lang="ja">職人の手造り</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BREWERY HILL DIVIDER: artisan silhouettes working barrels along the ridge -->
+<div class="brewridge" aria-hidden="true">
+  <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+    <path class="br-hill" d="M0 150 L0 100 C 150 82, 300 78, 450 94 C 600 110, 740 112, 880 98 C 1020 84, 1160 80, 1300 92 C 1360 97, 1400 100, 1440 98 L1440 150 Z"/>
+  </svg>
+  <svg class="br-scene" viewBox="0 0 1440 150" preserveAspectRatio="none">
+    <g transform="translate(150, 41)">
+      <g class="bw-fig">
+        <circle class="bw-solid" cx="88" cy="-16" r="7.5"/>
+        <path class="bw-solid" d="M79 -7 Q88 -13 97 -7 L100 51 H76 Z"/>
+        <path class="bw-pole" d="M38 12 L104 -30"/>
+      </g>
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+    <g transform="translate(455, 68) scale(0.72)">
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+    <g transform="translate(755, 70) scale(-0.95, 0.95)">
+      <g class="bw-fig">
+        <circle class="bw-solid" cx="88" cy="-16" r="7.5"/>
+        <path class="bw-solid" d="M79 -7 Q88 -13 97 -7 L100 51 H76 Z"/>
+        <path class="bw-pole" d="M38 12 L104 -30"/>
+      </g>
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+    <g transform="translate(950, 61) scale(0.8)">
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+    <g transform="translate(1090, 44) scale(0.9)">
+      <g class="bw-fig">
+        <circle class="bw-solid" cx="88" cy="-16" r="7.5"/>
+        <path class="bw-solid" d="M79 -7 Q88 -13 97 -7 L100 51 H76 Z"/>
+        <path class="bw-pole" d="M38 12 L104 -30"/>
+      </g>
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+    <g transform="translate(1300, 63) scale(0.82)">
+      <path class="bw-solid" d="M2 8 Q2 2 9 2 H61 Q68 2 68 8 L65 46 Q65 51 58 51 H12 Q5 51 5 46 Z"/>
+      <rect class="bw-hoop" x="4" y="14" width="62" height="2.8"/>
+      <rect class="bw-hoop" x="5.5" y="34" width="59" height="2.8"/>
+    </g>
+  </svg>
+</div>
+
+<!-- SHOP SECTION: Product Spotlight, Multi-pack selector & Details -->
+<section class="shopfloat" id="buy">
+  <div class="collage">
+    <div class="shopmedia" data-gallery data-reveal>
+      <div class="thumbs" role="tablist" aria-label="Product photos">
+        <button class="thumb is-on" type="button" role="tab" aria-selected="true">
+          <img src="bottle-clean.jpg" alt="Three bottles of Shoyu Bros and dipping bowl" width="1024" height="1024">
+        </button>
+        <button class="thumb" type="button" role="tab" aria-selected="false">
+          <img src="detect-bottle.jpg" alt="Shoyu Bros artisan bottle in kitchen studio" width="1080" height="720">
+        </button>
+        <button class="thumb" type="button" role="tab" aria-selected="false">
+          <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" alt="Sizzling pan with shoyu sauce" width="1080" height="720">
+        </button>
+        <button class="thumb" type="button" role="tab" aria-selected="false">
+          <img src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Non-GMO soybeans and grains" width="960" height="960">
+        </button>
+        <button class="thumb" type="button" role="tab" aria-selected="false">
+          <img src="https://shoyubros.com/cdn/shop/files/IMG_3379_480x480@2x.jpg" alt="Earthenware jars aging under the sun" width="960" height="960">
+        </button>
+        <button class="thumb" type="button" role="tab" aria-selected="false">
+          <img src="https://shoyubros.com/cdn/shop/files/Mel_pic_2_720x.jpg" alt="Shoyu Bros founders crafting bottles" width="720" height="720">
+        </button>
+      </div>
+      <figure class="mainpic">
+        <img class="life" data-main src="bottle-clean.jpg" alt="Shoyu Bros Artisan Wild Garlic Aged Soy Sauce" width="1024" height="1024">
+      </figure>
+    </div>
+    
+    <div class="buypanel" data-reveal>
+      <p class="jp" lang="ja">醤油｜手造り・野生にんにく注入</p>
+      <h3>ARTISAN <br />FIRST-PRESSED<br />WILD GARLIC SHOYU</h3>
+      <p class="size-note">500 ML (17 FL OZ) &middot; NON-GMO &middot; 9-MONTH SUN AGED</p>
+      
+      <form class="dojo-packs dpk" id="shoyu-product-form" onsubmit="handleAddToCart(event)">
+        <fieldset>
+          <legend>PICK YOUR PACK</legend>
+          
+          <label class="dpk-opt">
+            <input type="radio" name="id" value="1" data-pack-price="$18.00" data-pack-name="1 BOTTLE" data-pack-sum="$18.00 + $4.50 shipping. A 2-pack qualifies for free shipping with code SHOYUSALE." data-pack-img="detect-bottle.jpg">
+            <span class="dpk-card">
+              <span class="dpk-dot" aria-hidden="true"></span>
+              <img src="detect-bottle.jpg" alt="One bottle of Shoyu Bros" width="120" height="120" loading="lazy">
+              <span class="dpk-body">
+                <strong>1 BOTTLE</strong>
+                <span class="dpk-note">+ $4.50 shipping &middot; Starter Size</span>
+              </span>
+              <span class="dpk-right">
+                <span class="dpk-price">$18.00</span>
+              </span>
+            </span>
+          </label>
+          
+          <label class="dpk-opt">
+            <input type="radio" name="id" value="2" checked data-pack-price="$32.00" data-pack-name="2-PACK" data-pack-sum="$32.00 delivered. Free shipping with code SHOYUSALE. $16.00 a bottle." data-pack-img="bottle-clean.jpg">
+            <span class="dpk-card">
+              <span class="dpk-dot" aria-hidden="true"></span>
+              <img src="bottle-clean.jpg" alt="Two bottles of Shoyu Bros" width="120" height="120">
+              <span class="dpk-body">
+                <strong>2-PACK <em>MOST POPULAR</em></strong>
+                <span class="dpk-note">$16.00 a bottle &middot; Free Shipping with SHOYUSALE</span>
+              </span>
+              <span class="dpk-right">
+                <span class="dpk-price">$32.00</span>
+                <s>$36.00</s>
+              </span>
+            </span>
+          </label>
+          
+          <label class="dpk-opt">
+            <input type="radio" name="id" value="6" data-pack-price="$85.00" data-pack-name="6-PACK" data-pack-sum="$85.00 delivered. $14.16 a bottle, our best bulk value with free priority delivery." data-pack-img="bottle-clean.jpg">
+            <span class="dpk-card">
+              <span class="dpk-dot" aria-hidden="true"></span>
+              <img src="bottle-clean.jpg" alt="Six bottles of Shoyu Bros" width="120" height="120" loading="lazy">
+              <span class="dpk-body">
+                <strong>6-PACK <em>CHEF'S BUNDLE &middot; SAVE 22%</em></strong>
+                <span class="dpk-note">$14.16 a bottle &middot; Free Priority Shipping</span>
+              </span>
+              <span class="dpk-right">
+                <span class="dpk-price">$85.00</span>
+                <s>$108.00</s>
+              </span>
+            </span>
+          </label>
+        </fieldset>
         
-        <div class="relative z-10 w-full px-6 pt-32 md:pt-40 text-center">
-            <h1 class="font-serif text-[4rem] md:text-[8rem] leading-[0.9] text-white" style="text-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-                The Only Bro<br>You'll Need.
-            </h1>
-        </div>
+        <p class="dpk-sum" data-selected-pack-sum aria-live="polite">$32.00 delivered. Free shipping with code SHOYUSALE. $16.00 a bottle.</p>
         
-        <div class="relative z-10 w-full px-6 pb-32 text-center">
-            <p class="font-sans text-xl md:text-2xl text-white max-w-lg mx-auto font-medium mb-8" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-                The magic shoyu that brings out the best in your dishes. Be prepared for an umami experience.
-            </p>
-            <a href="https://shoyubros.com/collections/all" target="_blank" class="btn-lime px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wide inline-block">
-                Shop Now
-            </a>
+        <div class="dpk-order">
+          <label class="dpk-qty">QTY 
+            <input type="number" id="buy-quantity" name="quantity" value="1" min="1" max="99" inputmode="numeric" aria-label="Number of packs">
+          </label>
+          <button type="submit" class="pill" id="buy-submit-btn">
+            <span class="jroll">
+              <span>ADD TO CART &middot; <span data-selected-pack-price>$32.00</span></span>
+              <span class="jp2" aria-hidden="true">カートに追加</span>
+            </span>
+          </button>
         </div>
-    </section>
-
-    <!-- Main Content Overlapping the Hero -->
-    <main class="main-overlap pb-24">
-        
-        <!-- Marquee (Graza puts these directly beneath sections) -->
-        <div class="marquee-container mb-24">
-            <div class="marquee-content">
-                PROUDLY MALAYSIAN! &nbsp;⭑&nbsp; EST. 2020: GREAT THINGS CAN HAPPEN TOO IN A PANDEMIC. &nbsp;⭑&nbsp; INFUSED WITH WILD GARLIC! &nbsp;⭑&nbsp; SOME SAY IT SMELLS LIKE TRUFFLES! &nbsp;⭑&nbsp; NO MSG ADDED. &nbsp;⭑&nbsp; 
-                PROUDLY MALAYSIAN! &nbsp;⭑&nbsp; EST. 2020: GREAT THINGS CAN HAPPEN TOO IN A PANDEMIC. &nbsp;⭑&nbsp; INFUSED WITH WILD GARLIC! &nbsp;⭑&nbsp; SOME SAY IT SMELLS LIKE TRUFFLES! &nbsp;⭑&nbsp; NO MSG ADDED. &nbsp;⭑&nbsp;
-            </div>
+      </form>
+      
+      <p class="desc">Born out of passion in Malaysia, Shoyu Bros is small-batch artisanal soy sauce crafted slowly, the way legendary shoyu is meant to be. Made with non-GMO Canadian soybeans, roasted wheat, and sea salt brine, it spends 9 full months basking under the equatorial sun in earthenware jars before being pressed once and infused with aromatic wild garlic.</p>
+      <p class="desc">Instead of aggressive industrial saltiness, Shoyu Bros reveals deep, layered umami with an enchanting earthy, mushroom-like fragrance that some compare to black truffles.<br /><br />
+      <b>Taste what shoyu was always meant to be.</b></p>
+      
+      <details>
+        <summary><span class="sflex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2zM6 9h12M6 14h12"/></svg>MADE THE SHOYU BROS WAY</span></summary>
+        <p>Naturally fermented using Aspergillus sojae mold, aged 9 months in earthen clay urns, then slow-pressed once through fine cloth to preserve the natural fragrance and oils.</p>
+      </details>
+      <details>
+        <summary><span class="sflex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c-4 0-7-3-7-8 0-5 3-9 7-10 4 1 7 5 7 10 0 5-3 8-7 8zM12 3v18"/></svg>4 INGREDIENTS &middot; ZERO ADDED MSG</span></summary>
+        <p>Canadian non-GMO soybeans, roasted wheat, sea salt brine, and fresh wild garlic. No chemical hydrolysates, no caramel coloring, no MSG.</p>
+      </details>
+      <details>
+        <summary><span class="sflex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7zM7 19a1.6 1.6 0 1 0 0-3.2A1.6 1.6 0 0 0 7 19zM17 19a1.6 1.6 0 1 0 0-3.2A1.6 1.6 0 0 0 17 19z"/></svg>SHIPPING ACROSS SG &amp; MY</span></summary>
+        <p>Dispatched weekly in cushioned protective boxes. Fast reliable shipping to Singapore, West &amp; East Malaysia.</p>
+      </details>
+      <details>
+        <summary><span class="sflex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3h4l0.8 3h-5.6zM8.5 6h7v3a2.2 2.2 0 0 1-2.2 2.2h-2.6A2.2 2.2 0 0 1 8.5 9zM12 11.2V15M9 15h6l0.8 6H8.2z"/></svg>HOW TO USE: DRIZZLE, SIZZLE &amp; DIP</span></summary>
+        <div class="howto-grid">
+          <div>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 4h6l1 4h-8zM11 8h10v4a3 3 0 0 1-3 3h-4a3 3 0 0 1-3-3zM16 15v5M12 20h8l1 8H11z"/><path d="M16 26v0.5"/></svg>
+            <b>DRIZZLE &amp; SIZZLE</b>
+            <p>Splash over hot wok fried rice, noodles, wantan mee, seared ribeye steak, morning eggs, avocado toast, and sautéed mushrooms.</p>
+          </div>
+          <div>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 18h22c0 4-3 7-7 7h-8c-4 0-7-3-7-7z"/><path d="M9 21c3-1.5 11-1.5 14 0"/><path d="M20 6l3 8M24 5l2 9"/></svg>
+            <b>DIP</b>
+            <p>Pour into a saucer for sushi, sashimi, pan-fried gyoza, dumplings, tempura, tofu, and spring rolls.</p>
+          </div>
         </div>
+      </details>
+    </div>
+  </div>
+  
+  <!-- JAPANESE SEAL STAMPS -->
+  <div class="fishrow" data-reveal aria-label="Why Shoyu Bros">
+    <article class="fish-stamp fs-organic">
+      <span class="fish-stamp-jp" lang="ja" aria-hidden="true">大豆</span>
+      <span class="fish-stamp-shape"><b class="fish-stamp-text"><span class="st-en">100% Non-GMO<br />Soybeans</span><span class="st-jp" lang="ja">非遺伝子<br>大豆</span></b></span>
+    </article>
+    <article class="fish-stamp fs-barrel">
+      <span class="fish-stamp-jp" lang="ja" aria-hidden="true">醸造</span>
+      <span class="fish-stamp-shape"><b class="fish-stamp-text"><span class="st-en">Sun Aged<br />9 Months</span><span class="st-jp" lang="ja">天日熟成<br>九ヶ月</span></b></span>
+    </article>
+    <article class="fish-stamp fs-japan">
+      <span class="fish-stamp-jp" lang="ja" aria-hidden="true">大蒜</span>
+      <span class="fish-stamp-shape"><b class="fish-stamp-text"><span class="st-en">Wild Garlic<br />Infused</span><span class="st-jp" lang="ja">野生大蒜<br>薫り</span></b></span>
+    </article>
+    <article class="fish-stamp fs-pure">
+      <span class="fish-stamp-jp" lang="ja" aria-hidden="true">無添加</span>
+      <span class="fish-stamp-shape"><b class="fish-stamp-text"><span class="st-en">Zero Added<br />MSG</span><span class="st-jp" lang="ja">無添加<br>純粋</span></b></span>
+    </article>
+  </div>
+</section>
 
-        <!-- Product Spotlight (Graza style: Clean white card on cream background) -->
-        <section class="max-w-6xl mx-auto px-6 mb-32">
-            <div class="bg-graza-white rounded-[40px] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 md:gap-24 shadow-sm">
-                <div class="w-full md:w-1/2">
-                    <img src="product-cropped-perfect.jpg" alt="Artisan Shoyu" class="w-full rounded-[30px] object-cover h-[500px] shadow-lg">
-                </div>
-                <div class="w-full md:w-1/2">
-                    <h2 class="font-serif text-5xl md:text-6xl text-graza-dark mb-4 leading-tight">Artisan Garlic-Infused Shoyu</h2>
-                    <p class="font-sans text-xl font-bold text-graza-dark opacity-60 mb-6 uppercase tracking-wider">
-                        First pressed soy sauce infused with wild garlic.
-                    </p>
-                    <p class="text-lg md:text-xl font-medium mb-10 leading-relaxed text-graza-dark">
-                        Made from non-GMO Canadian soybeans with absolutely no added MSG. It boasts a unique character with a strong earthy & mushroom scent—some say it even smells like truffles!
-                    </p>
-                    <a href="https://shoyubros.com/collections/all" target="_blank" class="btn-dark px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wide inline-block">
-                        Add To Cart
-                    </a>
-                </div>
-            </div>
-        </section>
+<!-- FOUNDER STORY SECTION -->
+<section class="founder" id="founder">
+  <div class="fd-in">
+    <figure class="fd-photo" data-reveal>
+      <img src="https://shoyubros.com/cdn/shop/files/Mel_pic_2_720x.jpg" alt="The founders of Shoyu Bros in the workshop" loading="lazy" width="720" height="720">
+      <figcaption>IN THE WORKSHOP <em lang="ja">家族の厨房</em></figcaption>
+    </figure>
+    <div class="fd-copy" data-reveal>
+      <p class="fd-kick">THE BROTHERS BEHIND THE BREW <em lang="ja">兄弟の情熱</em></p>
+      <h2>MEET<br />THE BROS</h2>
+      <p class="lead">"Great things can happen too in a pandemic," featured the Malay Mail in June 2021. Shoyu Bros began with a simple craving for honest, full-bodied soy sauce that honored ancestral craft.</p>
+      <p>Frustrated by watered-down commercial sauces loaded with preservatives and artificial flavor enhancers, we began fermenting non-GMO soybeans in earthenware jars right here in Southeast Asia.</p>
+      <p>When we infused our first press with fresh wild garlic, the kitchen filled with an aroma so earthy and magnetic that some compared it to truffles. Food critics at Eat Drink KL were quick to discover its magic &mdash; writing about our garlic shoyu starring in everything from Spanish paella to Mexican tacos and local wantan mee.</p>
+      <p class="proud">Every single bottle is still small-batch blended and sealed with the exact same passion that started it all.</p>
+    </div>
+  </div>
+</section>
 
-        <!-- Value Proposition -->
-        <section class="max-w-7xl mx-auto px-6 mb-32">
-            <h2 class="font-serif text-5xl md:text-6xl text-center text-graza-dark mb-16">Soy sauce the way it should be.</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Block 1 -->
-                <div class="bg-graza-lime rounded-[30px] p-10 flex flex-col items-center text-center">
-                    <img src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Soybeans" class="w-40 h-40 rounded-full object-cover mb-6 border-[3px] border-graza-dark">
-                    <h3 class="font-serif text-3xl mb-4">The Bean Matters.</h3>
-                    <p class="font-medium text-lg leading-relaxed">Our soy sauce is carefully handpicked and made from a fermented paste of soybeans, roasted grain, brine, and Aspergillus sojae mold.</p>
-                </div>
-                <!-- Block 2 -->
-                <div class="bg-graza-white rounded-[30px] p-10 flex flex-col items-center text-center">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_3379_480x480@2x.jpg" alt="Aging Process" class="w-40 h-40 rounded-full object-cover mb-6 border-[3px] border-graza-dark">
-                    <h3 class="font-serif text-3xl mb-4">The Aging Process.</h3>
-                    <p class="font-medium text-lg leading-relaxed">Aged for 9 months under the sun. Combining high-quality natural ingredients and traditional methods to ensure a rich, premium flavor.</p>
-                </div>
-                <!-- Block 3 -->
-                <div class="bg-graza-lime rounded-[30px] p-10 flex flex-col items-center text-center">
-                    <img src="https://shoyubros.com/cdn/shop/files/629ca738-ad8a-4e4f-8429-f529f7f3e2a0_480x480@2x.jpg" alt="Improving Lives" class="w-40 h-40 rounded-full object-cover mb-6 border-[3px] border-graza-dark">
-                    <h3 class="font-serif text-3xl mb-4">Improving Lives.</h3>
-                    <p class="font-medium text-lg leading-relaxed">Know what you're using daily. We go through great measures to implement meticulous quality control at every stage.</p>
-                </div>
-            </div>
-        </section>
+<!-- MOUNTAIN DIVIDER WITH FLOATING TORII GATE -->
+<div class="ridge" aria-hidden="true" style="--from: var(--cream); --to: var(--navy);">
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path class="r-back" d="M0 120 L0 82 L55 58 L105 76 L165 28 L225 70 L285 46 L345 74 L415 18 L480 64 L540 42 L605 76 L665 30 L730 66 L800 12 L865 60 L925 40 L985 72 L1045 24 L1105 62 L1165 44 L1225 74 L1285 22 L1345 60 L1400 44 L1440 62 L1440 120 Z"/>
+    <path class="r-front" d="M0 120 L0 98 L65 74 L125 94 L195 48 L265 88 L330 68 L395 96 L455 36 L525 86 L590 62 L655 94 L702 34 L738 34 L790 86 L855 64 L920 96 L990 44 L1055 90 L1120 68 L1185 98 L1255 40 L1320 86 L1385 66 L1440 88 L1440 120 Z"/>
+  </svg>
+  <div class="torii-drift"><svg class="torii" viewBox="0 0 60 54" aria-hidden="true"><path d="M6 14 Q30 8 54 14 M10 22 H50 M16 14 V54 M44 14 V54 M30 22 V14"/></svg></div>
+</div>
 
-        <!-- Press / Social Proof (Graza style: Large distinct color block) -->
-        <section class="max-w-6xl mx-auto px-6 mb-32">
-            <div class="bg-graza-dark rounded-[40px] p-12 md:p-20 text-center text-graza-cream relative overflow-hidden">
-                <h2 class="font-serif text-5xl md:text-6xl mb-12 relative z-10">Don't just take it from your Bros.</h2>
-                <div class="flex flex-col md:flex-row justify-center items-stretch gap-6 mb-12 relative z-10">
-                    <div class="bg-graza-cream text-graza-dark p-8 rounded-3xl w-full md:w-1/3 flex flex-col justify-center">
-                        <h4 class="font-serif text-3xl mb-2">Eat Drink KL</h4>
-                        <p class="font-bold text-graza-dark opacity-60 uppercase text-sm tracking-widest">(2021 write up)</p>
-                    </div>
-                    <div class="bg-graza-lime text-graza-dark p-8 rounded-3xl w-full md:w-1/3 flex flex-col justify-center">
-                        <h4 class="font-serif text-3xl mb-2">Malay Mail</h4>
-                        <p class="font-bold text-graza-dark opacity-60 uppercase text-sm tracking-widest">(June 2020 Review)</p>
-                    </div>
-                </div>
-                <a href="https://shoyubros.com/pages/about-us" target="_blank" class="inline-block font-bold text-xl text-graza-cream hover:text-graza-lime underline underline-offset-8 transition-colors relative z-10">
-                    Read more about us ➛
-                </a>
-            </div>
-        </section>
-
-        <!-- Wholesale / B2B -->
-        <section class="max-w-7xl mx-auto px-6 text-center mb-24">
-            <h2 class="font-serif text-5xl md:text-7xl text-graza-dark mb-6">Interested to be a reseller?</h2>
-            <p class="font-sans text-2xl font-medium text-graza-dark mb-10">
-                Bring the umami to your customers.
-            </p>
-            <a href="mailto:artisanlabb@gmail.com" class="btn-dark px-10 py-4 rounded-full font-bold text-xl uppercase tracking-wide inline-block">
-                Email artisanlabb@gmail.com
-            </a>
-        </section>
-
-        <!-- Instagram Carousel -->
-        <section class="mt-32 mb-16 overflow-hidden">
-            <h2 class="font-serif text-5xl md:text-6xl text-center text-graza-dark mb-12">
-                <a href="https://www.instagram.com/shoyubros/" target="_blank" class="hover:text-graza-red transition-colors underline decoration-4 underline-offset-8">Follow Us @shoyubros</a>
-            </h2>
-            <div class="w-full overflow-hidden relative">
-                <div class="flex gap-6 animate-carousel w-max hover:pause-animation">
-                    <!-- Fresh Images for infinite scroll effect -->
-                    <img src="https://shoyubros.com/cdn/shop/files/BDP06300resized_5af231dc-05b0-4167-9db8-c96b5a664326_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 1">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_085541_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 2">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 3">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_5739_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 4">
-                    <img src="https://shoyubros.com/cdn/shop/files/Mel_pic_2_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 5">
-                    
-                    <!-- Duplicates -->
-                    <img src="https://shoyubros.com/cdn/shop/files/BDP06300resized_5af231dc-05b0-4167-9db8-c96b5a664326_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 1">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_085541_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 2">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_20210123_090956_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 3">
-                    <img src="https://shoyubros.com/cdn/shop/files/IMG_5739_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 4">
-                    <img src="https://shoyubros.com/cdn/shop/files/Mel_pic_2_720x.jpg" class="h-64 w-64 md:h-80 md:w-80 object-cover rounded-[30px] flex-shrink-0 shadow-sm" alt="Insta 5">
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-graza-dark text-graza-cream pt-0 pb-16 md:pb-20">
-        
-        <!-- Stretched Newsletter Banner -->
-        <div class="relative w-full h-[60vh] min-h-[500px] mb-16 flex flex-col justify-end">
-            <!-- Stretched Background Image (High-res) -->
-            <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" alt="Shoyu Bros Stirfry" class="absolute inset-0 w-full h-full object-cover">
-            
-            <!-- Dark Gradient Overlay for text readability -->
-            <div class="absolute inset-0 bg-gradient-to-t from-graza-dark via-graza-dark/40 to-transparent"></div>
-            
-            <!-- Newsletter Content aligned to the bottom -->
-            <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 pb-12 md:pb-16">
-                <div class="max-w-2xl">
-                    <h3 class="font-serif text-3xl md:text-5xl mb-6 leading-tight text-graza-cream">Friends let friends know about good umami.</h3>
-                    <form class="flex flex-row gap-2 md:gap-4 max-w-xl w-full">
-                        <input type="email" placeholder="Your email address" class="flex-1 w-full bg-graza-cream text-graza-dark px-4 md:px-6 py-3 md:py-4 rounded-full font-medium text-sm md:text-lg focus:outline-none focus:ring-4 focus:ring-graza-lime min-w-0">
-                        <button type="submit" class="btn-lime px-6 md:px-10 py-3 md:py-4 rounded-full font-bold uppercase text-sm md:text-lg shrink-0 border-[2px] border-graza-dark">Sign Up</button>
-                    </form>
-                </div>
-            </div>
+<!-- US VS THEM: COMPARISON TABLE -->
+<section class="vs" id="difference">
+  <img class="bloss flip" src="blossom-corner.png" alt="" aria-hidden="true" width="588" height="711">
+  <div class="vs-wrap">
+    <div class="vs-copy" data-reveal>
+      <h2>THE SHOYU BROS<br />DIFFERENCE</h2>
+      <p class="vs-kick">How authentically sun-brewed shoyu stacks against the domestic ones in your kitchen cabinet.</p>
+    </div>
+    <div class="vs-tablewrap" data-reveal>
+      <div class="vs-table">
+        <div class="dojo-bg" aria-hidden="true"></div>
+        <div class="vrow">
+          <div class="cell head lab" aria-hidden="true"></div>
+          <div class="cell head dojo">
+            <img class="hbg" src="vs-barrels.jpg" alt="" aria-hidden="true" width="1600" height="1066">
+            <img class="hbtl" src="shoyubros-bottle-clean.png" alt="Shoyu Bros bottle" width="729" height="180">
+            <span>SHOYU BROS</span>
+          </div>
+          <div class="cell head gen">
+            <img class="hbg" src="vs-tanks.jpg" alt="" aria-hidden="true" width="1600" height="1066">
+            <img class="hbtl" src="vs-generic-bottle.png" alt="Generic soy sauce dispenser bottle" width="615" height="1350">
+            <span>GENERIC BRANDS</span>
+          </div>
         </div>
-
-        <!-- Links & Copyright Grid -->
-        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-            <nav class="flex flex-wrap gap-x-8 gap-y-4 font-bold text-lg">
-                <a href="#" class="hover:text-graza-lime transition-colors">Refund Policy</a>
-                <a href="#" class="hover:text-graza-lime transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-graza-lime transition-colors">Terms And Conditions</a>
-                <a href="https://shoyubros.com/pages/about-us" class="hover:text-graza-lime transition-colors">About Us</a>
-                <a href="#" class="hover:text-graza-lime transition-colors">Shipping Policy</a>
-            </nav>
-            <div class="font-medium text-graza-cream opacity-60 flex flex-col md:items-end">
-                <a href="https://www.instagram.com/shoyubros/" target="_blank" class="hover:text-graza-lime hover:opacity-100 transition-all mb-2 text-lg font-bold">Instagram</a>
-                <p>&copy; 2026, Shoyu Bros.</p>
-            </div>
+        <div class="vrow">
+          <div class="cell lab">ORIGIN</div>
+          <div class="cell dojo"><b>ARTISANAL SMALL BATCH</b></div>
+          <div class="cell gen"><b>INDUSTRIAL MEGA-FACTORY</b></div>
         </div>
-    </footer>
+        <div class="vrow">
+          <div class="cell lab">AGING TIME</div>
+          <div class="cell dojo"><b>9 MONTHS SUN-FERMENTED</b></div>
+          <div class="cell gen"><b>2–4 WEEKS ACID ACCELERATED</b></div>
+        </div>
+        <div class="vrow">
+          <div class="cell lab">FERMENTATION</div>
+          <div class="cell dojo"><b>EARTHEN CLAY JARS</b></div>
+          <div class="cell gen"><b>COMMERCIAL STEEL TANKS</b></div>
+        </div>
+        <div class="vrow">
+          <div class="cell lab">GARLIC INFUSION</div>
+          <div class="cell dojo"><b>100% REAL WILD GARLIC</b></div>
+          <div class="cell gen"><b>NONE / SYNTHETIC FLAVOR</b></div>
+        </div>
+        <div class="vrow">
+          <div class="cell lab">SOYBEANS</div>
+          <div class="cell dojo"><b>WHOLE CANADIAN NON-GMO</b></div>
+          <div class="cell gen"><b>DEFATTED SOYBEAN RESIDUE</b></div>
+        </div>
+        <div class="vrow">
+          <div class="cell lab">ADDED MSG</div>
+          <div class="cell dojo"><b>0% ADDED MSG</b></div>
+          <div class="cell gen"><b>LOADED WITH MSG (E621)</b></div>
+        </div>
+        <div class="vrow">
+          <div class="cell lab">AROMA PROFILE</div>
+          <div class="cell dojo"><b>EARTHY TRUFFLE &amp; MUSHROOM</b></div>
+          <div class="cell gen"><b>HARSH SALTY CHEMICAL STING</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="vs-cta" data-reveal>
+    <a class="switchpill" href="#buy"><span class="jroll"><span>EXPERIENCE THE DIFFERENCE</span><span class="jp2" aria-hidden="true">商品を見る</span></span></a>
+  </div>
+  <p class="vs-note2" data-reveal>COMPARED AGAINST MASS-MARKET PACKAGED CONDIMENTS SOLD IN RETAIL STORES.</p>
+</section>
 
-    <!-- Scroll script for Navbar -->
-    <script>
-        // Scroll script for Navbar
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (window.scrollY > 50) {
-                // Scrolled: Solid cream background, dark text, dark border
-                nav.classList.remove('bg-transparent', 'border-transparent', 'text-white');
-                nav.classList.add('bg-graza-cream', 'border-graza-dark', 'text-graza-dark');
-            } else {
-                // Top: Transparent background, no border, white text over video
-                nav.classList.add('bg-transparent', 'border-transparent', 'text-white');
-                nav.classList.remove('bg-graza-cream', 'border-graza-dark', 'text-graza-dark');
-            }
-        });
+<!-- JAPANESE TYPOGRAPHY MARQUEE -->
+<div class="jpband" aria-hidden="true">
+  <div class="track" data-double>
+    <div class="set" style="display:flex;">
+      <span lang="ja">世界一美味しい醤油・天然醸造・野生ニンニク・一番搾り</span>
+      <span lang="ja">世界一美味しい醤油・天然醸造・野生ニンニク・一番搾り</span>
+      <span lang="ja">世界一美味しい醤油・天然醸造・野生ニンニク・一番搾り</span>
+    </div>
+  </div>
+</div>
 
-        // Mobile Menu Toggle Logic
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const closeBtn = document.getElementById('close-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+<!-- MADE FOR EVERY MEAL: Occasion cards -->
+<section class="made" id="meals">
+  <div class="made-headwrap">
+    <span class="pillmini" data-reveal lang="ja">どんな料理にも</span>
+    <h2 class="made-head" data-reveal>DESIGNED FOR<br />EVERY MEAL</h2>
+  </div>
+  <div class="mealcards" data-reveal>
+    <div class="track" data-double>
+      <div class="set">
+        <div class="mealcard">
+          <span class="chip">DIP &middot; つけ</span>
+          <h3>DIP INTO<br />UMAMI</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/sushi-drizzle-v8.jpg" alt="Shoyu Bros dipped with sushi and sashimi" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">SIZZLE &middot; 炒め</span>
+          <h3>WOK HEI<br />STIR-FRY</h3>
+          <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" alt="Fragrant wok stir fry with garlic shoyu glaze" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">ELEVATE &middot; 麺</span>
+          <h3>WANTAN MEE<br />UPGRADED</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/sandwich-drizzle-v8.jpg" alt="Noodles tossed with garlic shoyu as praised in Malay Mail" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">SEAR &middot; 焼肉</span>
+          <h3>THE WAGYU<br />SEAR</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/salmonbowl-drizzle-v8.jpg" alt="Pan seared steak with garlic shoyu reduction" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">FINISH &middot; 丼</span>
+          <h3>THE SALMON<br />POKE BOWL</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/vegetables-drizzle-v8.jpg" alt="Fresh salmon avocado poke bowl" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">DRIZZLE &middot; 朝</span>
+          <h3>EGGS,<br />ELEVATED</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/eggs-drizzle-v8.jpg" alt="Sunny side up eggs drizzled with garlic shoyu" loading="lazy">
+        </div>
+        <div class="mealcard">
+          <span class="chip">SURPRISE &middot; デザート</span>
+          <h3>YES, EVEN<br />ICE CREAM</h3>
+          <img src="//dojo.world/cdn/shop/t/7/assets/icecream-drizzle-v8.jpg" alt="Vanilla soft serve ice cream with shoyu drizzle" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('-translate-x-full');
-            mobileMenu.classList.add('translate-x-0');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling underneath
-        });
+<!-- FULL-BLEED VIDEO SIZZLE BAND -->
+<section class="lakeband" aria-labelledby="lb-title">
+  <video src="stirfry-evaluate-04.mp4" poster="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <div class="lb-cap" data-reveal>
+    <span class="lb-jp" lang="ja">太陽と陶器の恵み</span>
+    <h2 id="lb-title">BRED UNDER THE SUN. INFUSED WITH WILD GARLIC.</h2>
+  </div>
+</section>
 
-        closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('translate-x-0');
-            mobileMenu.classList.add('-translate-x-full');
-            document.body.style.overflow = '';
-        });
-    </script>
+<!-- TICKET STUB RESERVE SECTION -->
+<section class="reservesec" id="reserve">
+  <div class="torn" aria-hidden="true"></div>
+  <div class="rs-wrap tmain">
+    <span class="jpring" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs><path id="ringpath" d="M100 22 a78 78 0 1 1 -0.01 0 z"/></defs>
+        <text font-size="14"><textPath href="#ringpath" lang="ja">天日熟成・九ヶ月・野性にんにく・職人の手造り・</textPath></text>
+      </svg>
+    </span>
+    <img class="rs-btl" src="shoyubros-bottle-clean.png" alt="Shoyu Bros Artisan Soy Sauce Bottle" data-reveal width="729" height="180">
+    <h2 class="rs-huge rs-news" data-reveal>
+      <span class="lm"><span class="lm-i">BATCH 004</span></span>
+      <span class="lm"><span class="lm-i">DON'T MISS</span></span>
+      <span class="lm"><span class="lm-i">THE NEXT DROP</span></span>
+    </h2>
+    <form class="tform" onsubmit="handleNewsletter(event)">
+      <input type="text" id="nl-name" placeholder="NAME" autocomplete="given-name" aria-label="Name">
+      <input type="email" id="nl-email" placeholder="EMAIL" autocomplete="email" aria-label="Email" required>
+      <button type="submit">SIGN UP &rarr;</button>
+    </form>
+    <p class="rs-facts" data-reveal>AGED UNDER THE SUN &middot; BATCH BREWED IN SOUTHEAST ASIA &middot; SHIPS TO SG &amp; MY</p>
+  </div>
+</section>
+
+<!-- SHOYU BROS ON FILM / 35MM LIFESTYLE MARQUEE -->
+<div class="foot-peaks" aria-hidden="true">
+  <div class="wavelayer back" data-peaks="26"></div>
+  <div class="wavelayer front" data-peaks="26"></div>
+</div>
+<section class="filmwall" id="film">
+  <div class="fw-head" data-reveal>
+    <span class="fw-eyebrow">SHOT ON 35MM <em lang="ja">東南アジアにて</em></span>
+    <h2>SHOYU BROS ON FILM</h2>
+    <p class="fw-sub">From the open-air fermentation urns to street stalls, hawker centers, and family kitchens.</p>
+  </div>
+  <div class="fw-marq" data-reveal>
+    <div class="track" data-double>
+      <div class="set">
+        <figure class="print">
+          <img src="https://shoyubros.com/cdn/shop/files/IMG_3379_480x480@2x.jpg" alt="Traditional clay pots aging shoyu">
+          <figcaption>THE CLAY POTS <em lang="ja">陶器の壺</em></figcaption>
+        </figure>
+        <figure class="print">
+          <img src="https://shoyubros.com/cdn/shop/files/strifry_banner2.jpg" alt="Sizzling wok with garlic shoyu">
+          <figcaption>WOK HEI SIZZLE <em lang="ja">鉄鍋の熱</em></figcaption>
+        </figure>
+        <figure class="print">
+          <img src="https://shoyubros.com/cdn/shop/files/fresh-picked-coffee-beans-for-roasting_480x480@2x.jpg" alt="Soybeans harvest">
+          <figcaption>THE HARVEST <em lang="ja">大豆の恵み</em></figcaption>
+        </figure>
+        <figure class="print">
+          <img src="https://shoyubros.com/cdn/shop/files/Mel_pic_2_720x.jpg" alt="Founders in the kitchen">
+          <figcaption>KITCHEN WORKSHOP <em lang="ja">厨房の情熱</em></figcaption>
+        </figure>
+        <figure class="print">
+          <img src="detect-bottle.jpg" alt="Shoyu Bros bottle on dining table">
+          <figcaption>TABLETOP ESSENTIAL <em lang="ja">卓上の友</em></figcaption>
+        </figure>
+        <figure class="print">
+          <img src="bottle-clean.jpg" alt="Shoyu Bros bottle trio and dipping bowl">
+          <figcaption>THE TRIO BOTTLES <em lang="ja">兄弟の絆</em></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-main">
+    <div class="foot-fugu">
+      <a href="#top" aria-label="Back to the top">
+        <img class="bigfish" src="logo-cropped.png" alt="Shoyu Bros Logo" style="filter: drop-shadow(0 10px 20px rgba(26,43,107,0.3)); max-width:240px; height:auto;">
+      </a>
+    </div>
+    <p class="foot-quote">
+      <span class="q-jp" lang="ja">「人生の最高の味は、手間と時間を惜しまぬ誠実さにある。」</span>
+      <span class="q-en">"GOOD UMAMI IS NOT JUST A TASTE, IT'S A CELEBRATION OF PATIENCE, PASSION, AND CRAFTSMANSHIP."</span>
+    </p>
+    <div class="foot-mailrow">
+      <a class="foot-mail" href="mailto:artisanlabb@gmail.com">HELLO @ SHOYUBROS.COM</a>
+      <img class="foot-luck" src="luck-mark.png" alt="" title="fuku: good luck" width="120" height="120">
+    </div>
+  </div>
+  
+  <div class="foot-links">
+    <div class="soc" aria-label="Shoyu Bros on social">
+      <a href="https://www.instagram.com/shoyubros/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.5.6.2 1 .5 1.4.9.4.4.7.9.9 1.4.2.4.4 1.1.5 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.5 2.3a3.9 3.9 0 0 1-2.3 2.3c-.4.2-1.1.4-2.3.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.5a3.9 3.9 0 0 1-2.3-2.3c-.2-.4-.4-1.1-.5-2.3-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.9.5-2.3.2-.6.5-1 .9-1.4.4-.4.9-.7 1.4-.9.4-.2 1.1-.4 2.3-.5 1.3-.1 1.7-.1 4.9-.1m0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.5.2-1.9.4-.5.2-.8.4-1.1.7-.3.3-.6.7-.7 1.1-.2.4-.3.8-.4 1.9-.1 1.3-.1 1.6-.1 4.8s0 3.5.1 4.8c.1 1.1.2 1.5.4 1.9.2.5.4.8.7 1.1.3.3.7.6 1.1.7.4.2.8.3 1.9.4 1.3.1 1.6.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.5-.2 1.9-.4.5-.2.8-.4 1.1-.7.3-.3.6-.7.7-1.1.2-.4.3-.8.4-1.9.1-1.3.1-1.6.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.5-.4-1.9a2.9 2.9 0 0 0-.7-1.1 2.9 2.9 0 0 0-1.1-.7c-.4-.2-.8-.3-1.9-.4-1.3-.1-1.6-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg>
+      </a>
+      <a href="https://take.app/fongfinest" target="_blank" rel="noopener" aria-label="Singapore Take.app Shop">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12z"/></svg>
+      </a>
+    </div>
+    <span class="copy">&copy; SHOYU BROS ARTISAN SOY SAUCE. ALL RIGHTS RESERVED.</span>
+    <div class="links">
+      <a href="#buy"><span class="jroll"><span>BUY NOW</span><span class="jp2" lang="ja" aria-hidden="true">商品を見る</span></span></a>
+      <a href="#story"><span class="jroll"><span>OUR STORY</span><span class="jp2" lang="ja" aria-hidden="true">物語</span></span></a>
+      <a href="#meals"><span class="jroll"><span>RECIPES</span><span class="jp2" lang="ja" aria-hidden="true">料理法</span></span></a>
+      <a href="https://shoyubros.com/policies/privacy-policy" target="_blank"><span class="jroll"><span>PRIVACY</span><span class="jp2" lang="ja" aria-hidden="true">プライバシー</span></span></a>
+      <a href="https://shoyubros.com/policies/terms-of-service" target="_blank"><span class="jroll"><span>TERMS</span><span class="jp2" lang="ja" aria-hidden="true">規約</span></span></a>
+      <a href="mailto:artisanlabb@gmail.com">WHOLESALE</a>
+    </div>
+  </div>
+</footer>
+
+<!-- STICKY BOTTOM BAR (Mobile & Desktop) -->
+<div class="stickybar" data-sticky aria-hidden="true">
+  <b>SHOYU BROS &middot; ARTISAN WILD GARLIC SHOYU</b>
+  <a href="#buy">BUY NOW</a>
+</div>
+
+<!-- SLIDE-OVER CART DRAWER -->
+<div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="closeCartDrawer(event)">
+  <div class="cart-drawer" onclick="event.stopPropagation()">
+    <div class="cart-header">
+      <h3>YOUR BAG</h3>
+      <button class="cart-close" onclick="closeCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-drawer-items">
+      <!-- Items dynamically populated via JS -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>SUBTOTAL</span>
+        <span id="cart-drawer-subtotal">$32.00</span>
+      </div>
+      <p style="margin:0; font-size:0.85rem; color:#666; font-family:var(--sans);">Shipping &amp; taxes calculated at checkout. Use code <b>SHOYUSALE</b> for free shipping on 2+ bottles!</p>
+      <a href="https://shoyubros.com/cart" class="checkout-btn" target="_blank">PROCEED TO CHECKOUT &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST MESSAGE -->
+<div class="shoyu-toast" id="shoyu-toast">
+  <span>✓</span> Added to your bag!
+</div>
+
+</div><!-- #shopify-section-template__main -->
+
+<!-- Main Interactive Scripts -->
+<script src="dojo.js" defer></script>
+<script src="dojo-edits.js" defer></script>
+
+<script>
+// Real-time Clock for Singapore & Tokyo
+function initLiveClock() {
+  const clocks = document.querySelectorAll("[data-jpclock]");
+  if (!clocks.length) return;
+
+  function update() {
+    const now = new Date();
+    // Format for Singapore time
+    const timeStr = now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Singapore', hour12: false });
+    const dateStr = now.toLocaleDateString('en-GB', { timeZone: 'Asia/Singapore', weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+    
+    // Japanese weekday Kanji
+    const kanjiDays = ['日', '月', '火', '水', '木', '金', '土'];
+    const jpDayStr = kanjiDays[now.getDay()];
+
+    clocks.forEach(c => {
+      const t = c.querySelector('.jc-time');
+      const d = c.querySelector('.jc-date');
+      if (t) t.textContent = timeStr;
+      if (d) d.textContent = `${dateStr} · ${jpDayStr}`;
+    });
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+// Shopping Cart Drawer Logic
+let cartState = {
+  packName: '2-PACK',
+  packPrice: 32.00,
+  quantity: 1,
+  img: 'bottle-clean.jpg'
+};
+
+function openCartDrawer() {
+  const overlay = document.getElementById('cart-drawer-overlay');
+  renderCartItems();
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCartDrawer(e) {
+  const overlay = document.getElementById('cart-drawer-overlay');
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderCartItems() {
+  const container = document.getElementById('cart-drawer-items');
+  const subtotalEl = document.getElementById('cart-drawer-subtotal');
+  const badgeEl = document.getElementById('nav-cart-count');
+
+  if (cartState.quantity <= 0) {
+    container.innerHTML = `<div style="text-align:center; padding:3rem 1rem; color:var(--navy); font-family:var(--round);">Your bag is currently empty.</div>`;
+    subtotalEl.textContent = '$0.00';
+    badgeEl.style.display = 'none';
+    return;
+  }
+
+  const total = (cartState.packPrice * cartState.quantity).toFixed(2);
+  subtotalEl.textContent = `$${total}`;
+  badgeEl.textContent = cartState.quantity;
+  badgeEl.style.display = 'block';
+
+  container.innerHTML = `
+    <div class="cart-item">
+      <img src="${cartState.img}" alt="${cartState.packName}">
+      <div class="cart-item-info">
+        <h4>Artisan Garlic Shoyu (${cartState.packName})</h4>
+        <p>$${cartState.packPrice.toFixed(2)}</p>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-top:0.5rem;">
+          <button onclick="changeCartQty(-1)" style="border:1px solid var(--navy-tint); background:#fff; width:28px; height:28px; border-radius:50%; cursor:pointer; font-weight:bold;">-</button>
+          <span style="font-family:var(--mono); font-weight:bold;">${cartState.quantity}</span>
+          <button onclick="changeCartQty(1)" style="border:1px solid var(--navy-tint); background:#fff; width:28px; height:28px; border-radius:50%; cursor:pointer; font-weight:bold;">+</button>
+          <button onclick="removeCartItem()" style="background:none; border:none; color:#888; font-size:0.8rem; margin-left:auto; cursor:pointer; text-decoration:underline;">Remove</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function changeCartQty(delta) {
+  cartState.quantity = Math.max(1, cartState.quantity + delta);
+  renderCartItems();
+}
+
+function removeCartItem() {
+  cartState.quantity = 0;
+  renderCartItems();
+}
+
+function handleAddToCart(e) {
+  e.preventDefault();
+  const form = document.getElementById('shoyu-product-form');
+  const selected = form.querySelector('input[name="id"]:checked');
+  const qtyInput = document.getElementById('buy-quantity');
+  
+  if (selected) {
+    cartState.packName = selected.dataset.packName || '2-PACK';
+    cartState.packPrice = parseFloat(selected.dataset.packPrice.replace('$', '')) || 32.00;
+    cartState.img = selected.dataset.packImg || 'bottle-clean.jpg';
+  }
+  cartState.quantity = parseInt(qtyInput.value, 10) || 1;
+
+  // Show Toast
+  const toast = document.getElementById('shoyu-toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2400);
+
+  // Open Drawer
+  setTimeout(() => openCartDrawer(), 300);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  const email = document.getElementById('nl-email').value;
+  alert(`Thank you for subscribing with ${email}! You're on the list for Batch 004.`);
+  e.target.reset();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initLiveClock();
+});
+</script>
+
 </body>
 </html>
